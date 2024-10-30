@@ -1,11 +1,12 @@
 import Image from "next/image";
 import profile from "../public/assets/Profile.jpeg";
 import Link from "next/link";
+import About from "./(components)/About";
 
 export default function Home() {
   return (
     <main className="flex gap-10 py-5">
-      <div className="flex flex-col gap-20 justify-between w-5/12">
+      <div className="flex flex-col gap-20 justify-between w-3/12">
         <div className="flex flex-col gap-8">
           <Image
             src={profile}
@@ -65,7 +66,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-8 gap-x-3 w-7/12 gap-y-5">
+      <div className="grid grid-cols-8 gap-x-3 w-9/12 gap-y-5">
         <div className="bg-[#F5F4F2] p-6 col-span-2 rounded-lg">
           <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">Experience</p>
         </div>
@@ -75,8 +76,9 @@ export default function Home() {
         <div className="bg-[#F5F4F2] p-6 col-span-2 rounded-lg">
           <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">Open Source</p>
         </div>
-        <div className="bg-[#F5F4F2] p-6 col-span-5">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">About</p>
+        <div className="bg-[#F5F4F2] p-6 col-span-5 flex flex-col gap-4">
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">About</p>
+          <About />
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-3">
           <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">
