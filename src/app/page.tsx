@@ -68,33 +68,33 @@ export default function Home() {
 
       <div className="grid grid-cols-8 gap-x-3 w-9/12 gap-y-5">
         <div className="bg-[#F5F4F2] p-6 col-span-2 rounded-lg">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">Experience</p>
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">Experience</p>
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-4 rounded-lg">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">Projects</p>
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">Projects</p>
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-2 rounded-lg">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">Open Source</p>
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">Open Source</p>
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-5 flex flex-col gap-4">
           <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">About</p>
           <About />
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-3">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">
             What I&apos;m listening to
           </p>
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-2">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">
             What I&apos;m reading
           </p>
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-2">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">Location</p>
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">Location</p>
         </div>
         <div className="bg-[#F5F4F2] p-6 col-span-4">
-          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl">
+          <p className="px-6 py-3 bg-[#E9E8E6] rounded-3xl w-fit">
             Featured blog posts
           </p>
         </div>
