@@ -84,7 +84,7 @@ export default function Home() {
       </div>
 
       <div className="grid grid-cols-8 gap-x-3 w-9/12 gap-y-5">
-        <div className="bg-[#F5F4F2] p-4 col-span-2 rounded-lg border-2 border-[#DBDAD6]">
+        <div className="bg-[#F5F4F2] p-4 col-span-2 rounded-lg border-2 border-[#DBDAD6] h-64 overflow-y-auto">
           <p className="px-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xs font-medium">
             Experience
           </p>
