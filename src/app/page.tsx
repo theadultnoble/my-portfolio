@@ -31,7 +31,10 @@ export default function Home() {
 
         <div className="grid grid-cols-3 gap-y-10">
           <div>
-            <Link href="" className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium">
+            <Link
+              href=""
+              className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
+            >
               Contact
             </Link>
           </div>
@@ -84,7 +87,7 @@ export default function Home() {
       </div>
 
       <div className="grid grid-cols-8 gap-x-3 w-9/12 gap-y-5">
-        <div className="bg-[#F5F4F2] p-4 col-span-2 rounded-lg border-2 border-[#DBDAD6] h-64 overflow-y-auto">
+        <div className="bg-[#F5F4F2] py-4 pl-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]">
           <p className="px-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xs font-medium">
             Experience
           </p>

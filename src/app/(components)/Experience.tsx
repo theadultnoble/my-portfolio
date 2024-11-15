@@ -7,7 +7,7 @@ import mindrift from "../../public/assets/Mindrift-logo.png";
 
 function Experience() {
   return (
-    <div className="flex flex-col gap-5 mt-6">
+    <div className="flex flex-col gap-5 mt-6 h-48 overflow-y-auto scrollbar-w-none">
       <div className="flex items-center gap-2">
         <Image src={openReplay} alt="openreplay-logo" width={50} className="rounded-full" />
         <div>

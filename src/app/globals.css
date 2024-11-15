@@ -16,3 +16,7 @@ body{
   inline-size: 95%;
   margin: auto;
 }
+
+.scrollbar-w-none{
+  scrollbar-width: none;
+}
