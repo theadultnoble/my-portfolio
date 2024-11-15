@@ -4,6 +4,7 @@ import Link from "next/link";
 import About from "./(components)/About";
 import Experience from "./(components)/Experience";
 import Learning from "./(components)/Learning";
+import { Icon } from "@iconify/react";
 
 export default function Home() {
   return (
@@ -30,58 +31,100 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-3 gap-y-10">
-          <div>
+          <div className="relative">
             <Link
               href=""
-              className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
+              className="pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
             >
               Contact
             </Link>
+            <div className="absolute top-1.5 start-3.5">
+              <Icon
+                icon="mdi-light:phone"
+                style={{ color: "#727270" }}
+                width={17}
+              />
+            </div>
           </div>
 
-          <div>
+          <div className="relative">
             <Link
               href=""
-              className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
+              className="pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
             >
               Email
             </Link>
+            <div className="absolute top-1 start-3.5">
+              <Icon
+                icon="material-symbols-light:mail-outline"
+                style={{ color: "#727270" }}
+                width={17}
+              />
+            </div>
           </div>
 
-          <div>
+          <div className="relative">
             <Link
               href=""
-              className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
+              className="pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
             >
               Github
             </Link>
+            <div className="absolute top-1 start-3.5">
+              <Icon
+                icon="iconoir:github"
+                style={{ color: "#727270" }}
+                width={17}
+              />
+            </div>
           </div>
 
-          <div>
+          <div className="relative">
             <Link
               href=""
-              className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
+              className="pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
             >
               Twitter
             </Link>
+            <div className="absolute top-1.5 start-3.5">
+              <Icon
+                icon="iconoir:twitter"
+                style={{ color: "#727270" }}
+                width={17}
+              />
+            </div>
           </div>
 
-          <div>
+          <div className="relative">
             <Link
               href=""
-              className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
+              className="pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
             >
               LinkedIn
             </Link>
+            <div className="absolute top-1 start-3.5">
+              <Icon
+                icon="iconoir:linkedin"
+                style={{ color: "#727270" }}
+                width={17}
+              />
+            </div>
           </div>
 
-          <div>
+          <div className="relative">
             <Link
               href=""
-              className="px-6 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
+              className="pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium"
             >
               Resume
             </Link>
+            <div className="absolute top-1 start-3.5">
+              <Icon
+                icon="iconoir:page"
+                style={{ color: "#727270" }}
+                width={17}
+              />
+            </div>
           </div>
         </div>
       </div>
