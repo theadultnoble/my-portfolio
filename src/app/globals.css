@@ -13,6 +13,10 @@ body{
 }
 
 .container{
-  inline-size: 90%;
+  inline-size: 95%;
   margin: auto;
+}
+
+.scrollbar-w-none{
+  scrollbar-width: none;
 }

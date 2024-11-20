@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 function Experience() {
   return (
+    
     <div className='flex flex-col gap-3 overflow-x'>
       <div className='flex items-center gap-2'>
         <Link href={'/open-replay'}>
@@ -62,6 +63,7 @@ function Experience() {
             <p>Jun 2023 - Present</p>
           </div>
         </Link>
+ routing
       </div>
     </div>
   );
