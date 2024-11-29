@@ -1,45 +1,41 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 function About() {
-  const [displayText, setDisplayText] = React.useState("hello");
+  const [displayText, setDisplayText] = React.useState('hello');
 
   const handleText = () => {
-    setDisplayText("hello");
+    setDisplayText('hello');
   };
 
   const handleText2 = () => {
-    setDisplayText("world");
+    setDisplayText('world');
   };
 
   return (
-    <div className="flex flex-col gap-8">
-      <p className="text-2xl font-medium">Who am I?</p>
-      {displayText === "hello" ? (
+    <div className='flex flex-col gap-2 h-44'>
+      <p className='text-1xl text-[#464644] font-medium'>Who am I?</p>
+      {displayText === 'hello' ? (
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9 }}
-          className="sm:text-sm 2xl:text-lg"
+          className='sm:text-xs 2xl:text-lg text-[#727270] '
         >
-          My name is Noble Okafor. I am a technical writer and software
-          developer with extensive experience in both fields. My expertise
-          covers a wide range of programming languages and development tools,
-          primarily focusing on web and mobile app development. I am interested
-          in building performant software solutions and writing about how to do
-          so. I believe in documenting knowledge not just for others but also
-          for my future self. My goal when writing is to simplify the
-          complexities behind software engineering topics in an engaging and
-          comprehensive. I am a dedicated learner and always strive to
-          familiarise myself with the latest tools and technologies to improve
-          my skills as a developer and, in turn, make me a better writer.
+          Experienced technical writer with a strong web and mobile development
+          background. A polyglot skilled in simplifying complex concepts and
+          creating quality content and documentation tailored to diverse
+          technical audiences. Adept at bridging the gap between technical teams
+          and end-users to ensure seamless understanding and adoption of
+          products.
         </motion.p>
-      ) : displayText === "world" ? (
+      ) : displayText === 'world' ? (
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9 }}
+          className='sm:text-xs 2xl:text-lg text-[#727270]'
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
           recusandae ipsum tempora sequi exercitationem veniam consequuntur.
@@ -47,17 +43,17 @@ function About() {
           illo fugit molestiae unde atque consectetur fuga!
         </motion.p>
       ) : (
-        ""
+        ''
       )}
-      <div className="flex gap-2 text-xs font-medium bg-[#DBDAD6] p-2 pr-8 rounded-3xl items-center w-fit">
+      <div className='flex gap-1 text-xxs font-medium bg-[#DBDAD6] mt-3 p-1 justify-between rounded-3xl items-center w-fit'>
         <p
-          className="hover:text-[#FFFFFF] hover:bg-[#464644] p-2 rounded-3xl cursor-pointer"
+          className='hover:text-[#FFFFFF] hover:bg-[#464644] px-2 py-1 rounded-3xl cursor-pointer '
           onClick={handleText}
         >
           Technical Writers
         </p>
         <p
-          className="hover:text-[#FFFFFF] hover:bg-[#464644] p-2 rounded-3xl cursor-pointer"
+          className='hover:text-[#FFFFFF] hover:bg-[#464644] px-2 py-1 rounded-3xl cursor-pointer'
           onClick={handleText2}
         >
           Software Developers
