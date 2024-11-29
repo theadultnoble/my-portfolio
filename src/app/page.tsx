@@ -31,11 +31,11 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='grid grid-cols-3 text-[#727270] gap-y-10'>
+        <div className=' grid grid-cols-3 text-[#727270] gap-y-10'>
           <div className='relative'>
             <Link
               href=''
-              className='pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
+              className='pl-9 pr-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
             >
               Contact
             </Link>
@@ -51,7 +51,7 @@ export default function Home() {
           <div className='relative'>
             <Link
               href=''
-              className='pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
+              className='pl-9 pr-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
             >
               Email
             </Link>
@@ -67,7 +67,7 @@ export default function Home() {
           <div className='relative'>
             <Link
               href=''
-              className='pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
+              className='pl-9 pr-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
             >
               Github
             </Link>
@@ -83,7 +83,7 @@ export default function Home() {
           <div className='relative'>
             <Link
               href=''
-              className='pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
+              className='pl-9 pr-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
             >
               Twitter
             </Link>
@@ -99,7 +99,7 @@ export default function Home() {
           <div className='relative'>
             <Link
               href=''
-              className='pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
+              className='pl-9 pr-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
             >
               LinkedIn
             </Link>
@@ -115,7 +115,7 @@ export default function Home() {
           <div className='relative'>
             <Link
               href=''
-              className='pl-9 pr-4 py-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
+              className='pl-9 pr-4 py-2 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium'
             >
               Resume
             </Link>
@@ -132,7 +132,7 @@ export default function Home() {
 
       <div className=' text-[#727270] grid grid-cols-8 gap-x-3 w-9/12 gap-y-5'>
         <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <p className='flex px-1  bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='mingcute:briefcase-fill'
               style={{ color: '#727270' }}
@@ -143,7 +143,7 @@ export default function Home() {
           <Experience />
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-4 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <p className='flex px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='icon-park-twotone:computer'
               style={{ color: '#727270' }}
@@ -153,7 +153,7 @@ export default function Home() {
           </p>
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <p className='flex px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='typcn:spanner-outline'
               style={{ color: '#727270' }}
@@ -163,7 +163,7 @@ export default function Home() {
           </p>
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-5 flex flex-col gap-4 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <p className='flex px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='fluent:person-12-regular'
               style={{ color: '#727270' }}
@@ -174,7 +174,7 @@ export default function Home() {
           <About />
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-3 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <p className='flex px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='mynaui:headphones'
               style={{ color: '#727270' }}
@@ -185,7 +185,7 @@ export default function Home() {
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-3 rounded-lg border-2 border-[#DBDAD6]'>
           <Link href='https://reactnative.dev/' target='_blank'>
-            <p className=' flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+            <p className=' flex px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
               <Icon
                 icon='emojione-monotone:books'
                 style={{ color: '#727270' }}
@@ -197,7 +197,7 @@ export default function Home() {
           </Link>
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <p className='flex px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='stash:pin-location'
               style={{ color: '#727270' }}
@@ -207,7 +207,7 @@ export default function Home() {
           </p>
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-3 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex px-1 py-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <p className='flex px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='stash:burger-classic'
               style={{ color: '#727270' }}
