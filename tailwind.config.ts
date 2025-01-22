@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontSize: {
-        xxs: '0.625rem',
-        xxxs: '0.5rem',
+        xxs: '0.5rem',
+        xxxs: '0.3rem',
       },
       colors: {
         background: 'var(--background)',
@@ -18,6 +18,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    require('tailwind-scrollbar'),
+  ],
 };
 export default config;

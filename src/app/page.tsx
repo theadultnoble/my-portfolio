@@ -32,78 +32,73 @@ export default function Home() {
         </div>
 
         <div className=' grid grid-cols-3 text-[#727270] gap-y-8 gap-x-6'>
-            <Link
-              href=''
-              className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
-            >
-              <Icon
-                icon='mdi-light:phone'
-                style={{ color: '#727270' }}
-                width={17}
-              />
-              Contact
-            </Link>
+          <Link
+            href=''
+            className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
+          >
+            <Icon
+              icon='mdi-light:phone'
+              style={{ color: '#727270' }}
+              width={17}
+            />
+            Contact
+          </Link>
 
-            <Link
-              href=''
-              className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
-            >
-              <Icon
-                icon='material-symbols-light:mail-outline'
-                style={{ color: '#727270' }}
-                width={17}
-              />
-              Email
-            </Link>
-         
-            <Link
-              href=''
-              className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
-            >
-              <Icon
-                icon='iconoir:github'
-                style={{ color: '#727270' }}
-                width={17}
-              />
-              Github
-            </Link>
+          <Link
+            href=''
+            className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
+          >
+            <Icon
+              icon='material-symbols-light:mail-outline'
+              style={{ color: '#727270' }}
+              width={17}
+            />
+            Email
+          </Link>
 
-            <Link
-              href=''
-              className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
-            >
-              <Icon
-                icon='iconoir:twitter'
-                style={{ color: '#727270' }}
-                width={17}
-              />
-              Twitter
-            </Link>
-            
-            <Link
-              href=''
-              className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
-            >
-              <Icon
-                icon='iconoir:linkedin'
-                style={{ color: '#727270' }}
-                width={17}
-              />
-              LinkedIn
-            </Link>
+          <Link
+            href=''
+            className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
+          >
+            <Icon
+              icon='iconoir:github'
+              style={{ color: '#727270' }}
+              width={17}
+            />
+            Github
+          </Link>
 
-            <Link
-              href=''
-              className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
-            >
-              <Icon
-                icon='iconoir:page'
-                style={{ color: '#727270' }}
-                width={17}
-              />
-              Resume
-            </Link>
-            
+          <Link
+            href=''
+            className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
+          >
+            <Icon
+              icon='iconoir:twitter'
+              style={{ color: '#727270' }}
+              width={17}
+            />
+            Twitter
+          </Link>
+
+          <Link
+            href=''
+            className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
+          >
+            <Icon
+              icon='iconoir:linkedin'
+              style={{ color: '#727270' }}
+              width={17}
+            />
+            LinkedIn
+          </Link>
+
+          <Link
+            href=''
+            className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
+          >
+            <Icon icon='iconoir:page' style={{ color: '#727270' }} width={17} />
+            Resume
+          </Link>
         </div>
       </div>
 

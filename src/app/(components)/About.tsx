@@ -45,15 +45,15 @@ function About() {
       ) : (
         ''
       )}
-      <div className='flex gap-1 text-xxs font-medium bg-[#DBDAD6] mt-3 p-1 justify-between rounded-3xl items-center w-fit'>
+      <div className='flex gap-1  font-medium bg-[#DBDAD6] mt-3 p-1 justify-between rounded-3xl items-center w-fit'>
         <p
-          className='hover:text-[#FFFFFF] hover:bg-[#464644] px-2 py-1 rounded-3xl cursor-pointer '
+          className='hover:text-[#FFFFFF] hover:bg-[#464644] px-2 py-1 rounded-3xl cursor-pointer text-xs'
           onClick={handleText}
         >
           Technical Writers
         </p>
         <p
-          className='hover:text-[#FFFFFF] hover:bg-[#464644] px-2 py-1 rounded-3xl cursor-pointer'
+          className='hover:text-[#FFFFFF] hover:bg-[#464644] px-2 py-1 rounded-3xl cursor-pointer text-xs'
           onClick={handleText2}
         >
           Software Developers

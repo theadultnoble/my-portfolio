@@ -2,21 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+    font-family: monospace;
+  }
 
-body{
-  background-color: #F0EFEB;
-}
+  body {
+    background-color: #f0efeb;
+  }
 
-.container{
-  inline-size: 95%;
-  margin: auto;
-}
+  .container {
+    inline-size: 95%;
+    margin: auto;
+  }
 
-.scrollbar-w-none{
-  scrollbar-width: none;
+  .scrollbar-w-none {
+    scrollbar-width: none;
+  }
 }

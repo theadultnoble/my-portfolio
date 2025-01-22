@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 function Experience() {
   return (
-    <div className='flex flex-col gap-5 mt-4 h-28 px-2 overflow-y-auto scrollbar-w-none'>
+    <div className='flex flex-col gap-5 mt-4 h-28 px-2 overflow-y-auto scrollbar-thin scrollbar-thumb-sky-500  scrollbar-w-none'>
       <div className='flex items-center gap-2'>
         <Link href={'/open-replay'}>
           <Image
