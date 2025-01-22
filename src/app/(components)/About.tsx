@@ -14,7 +14,7 @@ function About() {
   };
 
   return (
-    <div className='flex flex-col gap-1 h-44'>
+    <div className='flex flex-col gap-1 h-40'>
       <p className='text-1xl text-[#464644] font-medium'>Who am I?</p>
       {displayText === 'hello' ? (
         <motion.p

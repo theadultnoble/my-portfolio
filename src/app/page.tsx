@@ -4,6 +4,7 @@ import Link from 'next/link';
 import About from './(components)/About';
 import Experience from './(components)/Experience';
 import Learning from './(components)/Learning';
+import Location from './(components)/Location';
 import { Icon } from '@iconify/react';
 
 export default function Home() {
@@ -168,7 +169,7 @@ export default function Home() {
             <Learning />
           </Link>
         </div>
-        <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
+        <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#e4e3e0]'>
           <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='stash:pin-location'
@@ -177,6 +178,7 @@ export default function Home() {
             />
             Location
           </p>
+          <Location />
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-3 rounded-lg border-2 border-[#DBDAD6]'>
           <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
