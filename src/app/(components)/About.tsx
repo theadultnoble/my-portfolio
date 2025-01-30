@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 function About() {
   return (
-    <div className='flex flex-col gap-1 h-40'>
+    <div className='flex flex-col gap-1 h-28'>
       <p className='text-1xl text-[#464644] font-medium'>Who am I?</p>
       <motion.p
         initial={{ opacity: 0 }}

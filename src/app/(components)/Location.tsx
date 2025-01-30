@@ -3,11 +3,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
+import { Icon } from '@iconify/react';
 
 export default function Location() {
   const [isLoading, setIsLoading] = useState(true);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
+
 
   useEffect(() => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
@@ -19,11 +21,15 @@ export default function Location() {
       mapRef.current = new mapboxgl.Map({
         container: mapContainerRef.current,
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [-74.5, 40],
-        zoom: 9
+        center: [7.5213265209659745, 6.44144482630189], 
+        zoom: 13,
+      
+        
+        // interactive: false
       });
 
-      mapRef.current.addControl(new mapboxgl.NavigationControl());
+      mapRef.current.addControl(new mapboxgl.NavigationControl({showZoom: false,
+        showCompass: false}));
 
       mapRef.current.on('load', () => {
         setIsLoading(false);
@@ -43,9 +49,19 @@ export default function Location() {
   }, []);
 
   return (
-    <>
+    <div className="relative w-full h-full">
+      <div ref={mapContainerRef} className='absolute inset-0 rounded-lg w-full h-full '></div>
       {isLoading && <div className="absolute inset-0 flex items-center justify-center">Loading map...</div>}
-      <div ref={mapContainerRef} className='flex flex-1 relative'></div>
-    </>
+      <div className="absolute top-1 left-1">
+        <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+          <Icon
+            icon='stash:pin-location'
+            style={{ color: '#727270' }}
+            width={12}
+          />
+          Location
+        </p>
+      </div>
+    </div>
   );
 }
