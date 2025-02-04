@@ -35,6 +35,7 @@ export default function Home() {
 
         <div className=' grid grid-cols-3 text-[#727270] gap-y-8 gap-x-6'>
           <Link
+            target='_blank'
             href=''
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
@@ -47,6 +48,7 @@ export default function Home() {
           </Link>
 
           <Link
+            target='_blank'
             href=''
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
@@ -60,6 +62,7 @@ export default function Home() {
 
           <Link
             href='https://github.com/theadultnoble'
+            target='_blank'
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
             <Icon
@@ -71,7 +74,8 @@ export default function Home() {
           </Link>
 
           <Link
-            href=''
+            href='https://x.com/theadultnoble'
+            target='_blank'
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
             <Icon
@@ -83,6 +87,7 @@ export default function Home() {
           </Link>
 
           <Link
+            target='_blank'
             href='https://linkedin.com/in/nobleokafor'
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
@@ -95,6 +100,7 @@ export default function Home() {
           </Link>
 
           <Link
+            target='_blank'
             href='https://docs.google.com/document/d/1Y2ithUQ7qZLwgRlv1EY35kQvuaVFh1PX54Dl9crlh5U/edit?usp=sharing'
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
