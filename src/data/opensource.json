@@ -1,0 +1,12 @@
+[
+	{
+		"id": 1,
+		"name": "Open Zeppelin",
+		"description": "OpenZeppelin is a library for secure smart contract development, providing ERC20 and ERC721 implementation standards, for building decentralized systems. While learning smart contract development, I  contributed to the open-zeppelin docs community repo. My contribution to OpenZeppelin's documentation enhanced the accuracy and accessibility of their guides to users looking to integrate OpenZeppelin's security products into their projects. This improved OpenZeppelin and made blockchain technology information more accessible and secure for web3 developers worldwide."
+	},
+	{
+		"id": 2,
+		"name": "Dacade",
+		"description": "I participated in an incentivized boot camp where I developed decentralized applications (Dapps) on the Celo and Ethereum blockchain. I later advanced to evaluate other applicants, providing feedback and contributing to open-source documentation. This experience sharpened my skills in smart contract development, blockchain architecture, and peer evaluation while enhancing my technical writing and collaboration abilities. "
+	}
+]

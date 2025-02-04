@@ -6,6 +6,7 @@ import Experience from './(components)/Experience';
 import Learning from './(components)/Learning';
 import Location from './(components)/Location';
 import { Icon } from '@iconify/react';
+import OpenSource from './(components)/OpenSource';
 
 export default function Home() {
   return (
@@ -58,7 +59,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href=''
+            href='https://github.com/theadultnoble'
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
             <Icon
@@ -82,7 +83,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href=''
+            href='https://linkedin.com/in/nobleokafor'
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
             <Icon
@@ -94,7 +95,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href=''
+            href='https://docs.google.com/document/d/1Y2ithUQ7qZLwgRlv1EY35kQvuaVFh1PX54Dl9crlh5U/edit?usp=sharing'
             className='py-2 px-3 flex items-center gap-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] text-xs font-medium w-fit'
           >
             <Icon icon='iconoir:page' style={{ color: '#727270' }} width={17} />
@@ -134,6 +135,7 @@ export default function Home() {
             />
             Open Source
           </p>
+          <OpenSource />
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-5 flex flex-col gap-4 rounded-lg border-2 border-[#DBDAD6]'>
           <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>

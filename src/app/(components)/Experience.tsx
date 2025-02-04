@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 function Experience() {
   return (
-    <div className='flex flex-col gap-5 mt-4 h-28 px-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-500  scrollbar-w-none'>
+    <div className='mt-4 h-28 px-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-500  scrollbar-w-none'>
       <div className='flex items-center gap-2'>
         <Link href={'/open-replay'}>
           <Image
@@ -22,6 +22,9 @@ function Experience() {
             <p className='text-xxs'>Sep 2022 - Dec 2022</p>
           </div>
         </Link>
+      </div>
+      <div className="my-1.5">
+        <p className='w-[2px] h-8 bg-gray-200 rounded-lg'></p>
       </div>
 
       <div className='flex items-center gap-2 flex-col'>
@@ -38,6 +41,9 @@ function Experience() {
           </div>
         </Link>
       </div>
+      <div className="my-1.5">
+        <p className='w-[2px] h-8 bg-gray-200 rounded-lg'></p>
+      </div>
 
       <div className='flex items-center gap-2'>
         <Link href={'/muo'}>
@@ -47,6 +53,9 @@ function Experience() {
             <p className='text-xxs'>Mar 2024 - Aug 2024</p>
           </div>
         </Link>
+      </div>
+      <div className="my-1.5">
+        <p className='w-[2px] h-8 bg-gray-200 rounded-lg'></p>
       </div>
 
       <div className='flex items-center gap-2 flex-col'>
@@ -62,6 +71,9 @@ function Experience() {
             <p className='text-xxs'>Jun 2023 - Present</p>
           </div>
         </Link>
+      </div>
+      <div className="my-1.5">
+        <p className='w-[2px] h-8 bg-gray-200 rounded-lg'></p>
       </div>
     </div>
   );
