@@ -7,6 +7,7 @@ import Learning from './(components)/Learning';
 import Location from './(components)/Location';
 import { Icon } from '@iconify/react';
 import OpenSource from './(components)/OpenSource';
+import BlogPosts from './(components)/BlogPosts';
 
 export default function Home() {
   return (
@@ -189,6 +190,7 @@ export default function Home() {
             />
             Featured blog posts
           </p>
+          <BlogPosts />
         </div>
       </div>
     </main>
