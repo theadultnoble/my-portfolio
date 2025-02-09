@@ -34,7 +34,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=' grid grid-cols-3 text-[#727270] gap-y-8 gap-x-6'>
+        <div className=' grid grid-cols-3 text-[#727270] gap-y-5 gap-x-6'>
           <Link
             target='_blank'
             href=''
@@ -144,8 +144,8 @@ export default function Home() {
           </p>
           <OpenSource />
         </div>
-        <div className='bg-[#F5F4F2] p-2 col-span-5 flex flex-col gap-4 rounded-lg border-2 border-[#DBDAD6]'>
-          <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+        <div className='bg-[#F5F4F2] p-3 col-span-4 flex-1  flex-col gap-4 rounded-lg border-2 border-[#DBDAD6]'>
+          <p className='flex items-center gap-1 px-2 mb-3 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-thin'>
             <Icon
               icon='fluent:person-12-regular'
               style={{ color: '#727270' }}
@@ -155,7 +155,7 @@ export default function Home() {
           </p>
           <About />
         </div>
-        <div className='bg-[#F5F4F2] p-2 col-span-3 rounded-lg border-2 border-[#DBDAD6]'>
+        <div className='bg-[#F5F4F2] p-2 col-span-4 rounded-lg border-2 border-[#DBDAD6]'>
           <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='mynaui:headphones'
@@ -165,7 +165,7 @@ export default function Home() {
             What I&apos;m listening to
           </p>
         </div>
-        <div className='bg-[#F5F4F2] p-2 col-span-3 rounded-lg border-2 border-[#DBDAD6]'>
+        <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
           <Link href='https://reactnative.dev/' target='_blank'>
             <p className=' flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
               <Icon
@@ -178,10 +178,10 @@ export default function Home() {
             <Learning />
           </Link>
         </div>
-        <div className='bg-[#F5F4F2] p-1 col-span-3 rounded-lg border-2 border-[#e4e3e0]'>
+        <div className='bg-[#F5F4F2] p-1 col-span-2 h-44 rounded-lg border-2 border-[#e4e3e0]'>
           <Location />
         </div>
-        <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
+        <div className='bg-[#F5F4F2] p-2 col-span-4 overflow-hidden h-44 rounded-lg border-2 border-[#DBDAD6]'>
           <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='stash:burger-classic'
