@@ -10,8 +10,8 @@ const BlogPosts = () => {
   };
 
   return (
-    <div className='overflow-hidden mt-3 scrollbar-w-none'>
-      <div className='flex flex-col gap-2'>
+    <div className='h-96 overflow-y-scroll mt-3 flex'>
+      <div className='flex-1 flex-col gap-2'>
         {data.map((item) => {
           return (
             <div key={item.id} className='text-xs flex gap-1'>
