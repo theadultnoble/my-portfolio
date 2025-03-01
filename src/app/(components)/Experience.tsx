@@ -8,14 +8,14 @@ import Link from 'next/link';
 
 function Experience() {
   return (
-    <div className='mt-4 h-28 px-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-500  scrollbar-w-none'>
+    <div className='mt-4 h-28 px-2 overflow-y-scroll scrollbar-track-rounded-full scrollbar-thin scrollbar-track-gray-950'>
       <div className='flex items-center gap-2'>
         <Link href={'/open-replay'}>
           <Image
             src={openReplay}
             alt='openreplay-logo'
             width={30}
-            className='rounded-full'
+            className='rounded-full border border-[#DBDAD6]'
           />
           <div>
             <p className='font-medium text-xs text-[#464644]'>OpenReplay</p>
@@ -33,7 +33,7 @@ function Experience() {
             src={mindrift}
             alt='mindrift-logo'
             width={30}
-            className='rounded-full'
+            className='rounded-full border border-[#DBDAD6]'
           />
           <div>
             <p className='font-medium text-xs text-[#464644]'>Mindrift</p>
@@ -47,7 +47,7 @@ function Experience() {
 
       <div className='flex items-center gap-2'>
         <Link href={'/muo'}>
-          <Image src={muo} alt='MUO-logo' width={30} className='rounded-full' />
+          <Image src={muo} alt='MUO-logo' width={30} className='rounded-full border border-[#DBDAD6]' />
           <div>
             <p className='font-medium text-xs text-[#464644]'>MakeUseOf</p>
             <p className='text-xxs'>Mar 2024 - Aug 2024</p>
@@ -64,7 +64,7 @@ function Experience() {
             src={back4app}
             alt='back4app-logo'
             width={30}
-            className='rounded-full'
+            className='rounded-full border border-[#DBDAD6]'
           />
           <div>
             <p className='font-medium text-xs text-[#464644]'>Back4app</p>
