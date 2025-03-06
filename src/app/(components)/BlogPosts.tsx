@@ -10,11 +10,11 @@ const BlogPosts = () => {
   };
 
   return (
-    <div className='h-96 overflow-y-scroll mt-3 flex'>
-      <div className='flex-1 flex-col gap-2'>
+    <div className='mt-3 pr-2'>
+      <div className='flex flex-col divide-y divide-[#DBDAD6]'>
         {data.map((item) => {
           return (
-            <div key={item.id} className='text-xs flex gap-1'>
+            <div key={item.id} className='text-xs flex gap-2 py-2'>
               <Link href={item.url} target='_blank'>
                 <Image
                   src={item.image}
@@ -32,7 +32,7 @@ const BlogPosts = () => {
                 >
                   {truncateText(item.title, 25)}
                 </Link>
-                <Link href={item.url} target='_blank'>
+                <Link href={item.url} target='_blank' className='text-[#727270]'>
                   {truncateText(item.description, 25)}
                 </Link>
               </div>

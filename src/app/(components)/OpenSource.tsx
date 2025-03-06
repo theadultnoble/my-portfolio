@@ -5,8 +5,8 @@ import Image from "next/image";
 import data from "@/data/opensource.json";
 import { MoveRightIcon } from "lucide-react";
 import { MoveLeftIcon } from "lucide-react";
-import OpenZepellin from "@/public/assets/OpenZeppellin.png";
-import Dacade from "@/public/assets/dacade_og.png"
+import OpenZepellin from "/public/assets/OpenZeppellin.png";
+import Dacade from "/public/assets/dacade_og.png"
 
 const OpenSource = () => {
   const [display, setDisplay] = React.useState(1);

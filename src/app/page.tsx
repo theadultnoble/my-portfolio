@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import profile from '../public/assets/Profile.jpeg';
+import profile from '/public/assets/Profile.jpeg'
 import Link from 'next/link';
 import About from './(components)/About';
 import Experience from './(components)/Experience';
@@ -24,7 +24,7 @@ export default function Home() {
 
           <div className='flex flex-col gap-4'>
             <p className='text-2xl font-medium'>
-              Hi, I’m Noble Okafor a technical writer and Software Developer.
+              Hi, I&apos;m Noble Okafor a technical writer and Software Developer.
             </p>
             <p className=' text-xs text-[#727270] '>
               Experienced web and mobile developer passionate about creating
@@ -181,7 +181,8 @@ export default function Home() {
         <div className='bg-[#F5F4F2] p-1 col-span-2 h-44 rounded-lg border-2 border-[#e4e3e0]'>
           <Location />
         </div>
-        <div className='bg-[#F5F4F2] p-2 col-span-4 overflow-hidden h-44 rounded-lg border-2 border-[#DBDAD6]'>
+        <div className='bg-[#F5F4F2] p-2 col-span-4 h-44 rounded-lg border-2 border-[#DBDAD6] relative'>
+          <div className='absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
           <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='stash:burger-classic'
@@ -190,7 +191,9 @@ export default function Home() {
             />
             Featured blog posts
           </p>
-          <BlogPosts />
+          <div className='overflow-y-auto h-[calc(100%-2rem)] scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-[#E9E8E6] scrollbar-track-rounded-full scrollbar-thumb-rounded-full pr-2'>
+            <BlogPosts />
+          </div>
         </div>
       </div>
     </main>
