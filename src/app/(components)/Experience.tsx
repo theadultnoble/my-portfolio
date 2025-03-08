@@ -9,9 +9,9 @@ import Link from 'next/link';
 function Experience() {
   return (
     <div className='mt-4 h-28 relative'>
-      <div className='absolute top-0 left-0 right-2 h-10 bg-gradient-to-b from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
-      <div className='absolute bottom-0 left-0 right-2 h-10 bg-gradient-to-t from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
-      <div className='h-full px-2 overflow-y-auto scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-[#E9E8E6] scrollbar-track-rounded-full scrollbar-thumb-rounded-full pr-2'>
+      <div className='absolute top-0 left-0 right-2 h-5 bg-gradient-to-b from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
+      <div className='absolute bottom-0 left-0 right-2 h-5 bg-gradient-to-t from-[#F5F4F2] to-transparent pointer-events-none z-10 '></div>
+      <div className='h-full px-2 overflow-y-auto scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-[#E9E8E6] scrollbar-track-rounded-full scrollbar-thumb-rounded-full pr-2 '>
         <div className='flex items-center gap-2'>
           <Link href={'/open-replay'}>
             <Image

@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl';
 import { Icon } from '@iconify/react';
 
 export default function Location() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
 
@@ -23,8 +23,6 @@ export default function Location() {
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [7.5213265209659745, 6.44144482630189], 
         zoom: 13,
-      
-        
         // interactive: false
       });
 

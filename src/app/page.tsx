@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import profile from '/public/assets/Profile.jpeg'
+import profile from '/public/assets/Profile.jpeg';
 import Link from 'next/link';
 import About from './(components)/About';
 import Experience from './(components)/Experience';
 import Learning from './(components)/Learning';
+import Listening from './(components)/Listening';
 import Location from './(components)/Location';
 import { Icon } from '@iconify/react';
 import OpenSource from './(components)/OpenSource';
@@ -24,7 +25,8 @@ export default function Home() {
 
           <div className='flex flex-col gap-4'>
             <p className='text-2xl font-medium'>
-              Hi, I&apos;m Noble Okafor a technical writer and Software Developer.
+              Hi, I&apos;m Noble Okafor a technical writer and Software
+              Developer.
             </p>
             <p className=' text-xs text-[#727270] '>
               Experienced web and mobile developer passionate about creating
@@ -164,6 +166,7 @@ export default function Home() {
             />
             What I&apos;m listening to
           </p>
+          <Listening />
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
           <Link href='https://reactnative.dev/' target='_blank'>
