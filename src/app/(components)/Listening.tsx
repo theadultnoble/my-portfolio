@@ -1,14 +1,28 @@
+'use client';
 import React from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Listening() {
-  return (
-    <iframe
-      style={{ borderRadius: '12px' }}
-      src='https://open.spotify.com/embed/playlist/1s8c0X3WPWkHg7h0xKaqfw?utm_source=generator'
-      width='100%'
-      height='152'
-      allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-      loading='lazy'
-    ></iframe>
-  );
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    console.log('Listening component mounted'); // Check if the component is mounted
+    async function fetchData() {
+      console.log('Fetching token...'); // Check if useEffect is running
+      try {
+        const response = await fetch('/api/token');
+        console.log('Response received:', response); // Check if the response is received
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        setToken(data.access_token);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    fetchData();
+  }, []);
+  return <div>Spotify Token: {token ? token : '..loading token'}</div>;
 }

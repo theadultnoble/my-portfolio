@@ -13,11 +13,16 @@
 
   body {
     background-color: #f0efeb;
+    overflow: hidden;
   }
 
   .container {
-    inline-size: 95%;
-    margin: auto;
+    /* inline-size: 95%;
+    margin: auto; */
+    width: 95vw;
+    height: 95vh;
+    margin: 40px;
+    overflow: hidden;
   }
 
   .scrollbar-w-none {

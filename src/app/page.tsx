@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import profile from '/public/assets/Profile.jpeg';
 import Link from 'next/link';
@@ -166,7 +167,7 @@ export default function Home() {
             />
             What I&apos;m listening to
           </p>
-          <Listening />
+          <Listening key={Math.random()} />
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
           <Link href='https://reactnative.dev/' target='_blank'>
