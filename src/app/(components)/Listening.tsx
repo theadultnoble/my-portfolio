@@ -24,5 +24,5 @@ export default function Listening() {
     }
     fetchData();
   }, []);
-  return <div>Spotify Token: {token ? token : '..loading token'}</div>;
+  return <div className='overflow-auto'>Spotify Token: {token ? token : '..loading token'}</div>;
 }

@@ -10,29 +10,29 @@ const BlogPosts = () => {
   };
 
   return (
-    <div className='mt-3 pr-2'>
+    <div className='pr-2'>
       <div className='flex flex-col divide-y divide-[#DBDAD6]'>
         {data.map((item) => {
           return (
-            <div key={item.id} className='text-xs flex gap-2 py-2'>
+            <div key={item.id} className='flex gap-2 py-2'>
               <Link href={item.url} target='_blank'>
                 <Image
                   src={item.image}
                   alt={item.title}
-                  width={50}
-                  height={70}
+                  width={70}
+                  height={90}
                   className='rounded-md flex-shrink-0'
                 />
               </Link>
-              <div className='flex flex-col gap-1'>
+              <div className='flex flex-col'>
                 <Link
                   href={item.url}
                   target='_blank'
-                  className='font-bold text-md'
+                  className='text-[#464644] font-medium text-md'
                 >
                   {truncateText(item.title, 25)}
                 </Link>
-                <Link href={item.url} target='_blank' className='text-[#727270]'>
+                <Link href={item.url} target='_blank' className='text-[#727270] text-xs'>
                   {truncateText(item.description, 25)}
                 </Link>
               </div>

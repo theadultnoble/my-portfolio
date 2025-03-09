@@ -8,11 +8,11 @@ import Link from 'next/link';
 
 function Experience() {
   return (
-    <div className='mt-4 h-28 relative'>
+    <div className='mt-1 h-36 relative'>
       <div className='absolute top-0 left-0 right-2 h-5 bg-gradient-to-b from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
       <div className='absolute bottom-0 left-0 right-2 h-5 bg-gradient-to-t from-[#F5F4F2] to-transparent pointer-events-none z-10 '></div>
-      <div className='h-full px-2 overflow-y-auto scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-[#E9E8E6] scrollbar-track-rounded-full scrollbar-thumb-rounded-full pr-2 '>
-        <div className='flex items-center gap-2'>
+      <div className='h-full px-2 overflow-y-auto scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-transparent scrollbar-thumb-rounded-full'>
+        <div className='flex items-center pb-2'>
           <Link href={'/open-replay'}>
             <Image
               src={openReplay}
@@ -26,11 +26,7 @@ function Experience() {
             </div>
           </Link>
         </div>
-        <div className="my-1.5">
-          <p className='w-[2px] h-8 bg-gray-200 rounded-lg mx-auto'></p>
-        </div>
-
-        <div className='flex items-center gap-2 flex-col'>
+        <div className='flex items-center gap-2 pb-2 flex-col'>
           <Link href='/mindrift'>
             <Image
               src={mindrift}
@@ -44,11 +40,7 @@ function Experience() {
             </div>
           </Link>
         </div>
-        <div className="my-1.5">
-          <p className='w-[2px] h-8 bg-gray-200 rounded-lg mx-auto'></p>
-        </div>
-
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center pb-2 gap-2'>
           <Link href={'/muo'}>
             <Image src={muo} alt='MUO-logo' width={30} className='rounded-full border border-[#DBDAD6]' />
             <div>
@@ -57,11 +49,7 @@ function Experience() {
             </div>
           </Link>
         </div>
-        <div className="my-1.5">
-          <p className='w-[2px] h-8 bg-gray-200 rounded-lg mx-auto'></p>
-        </div>
-
-        <div className='flex items-center gap-2 flex-col'>
+        <div className='flex items-center pb-2 gap-2 flex-col'>
           <Link href={'/back4app'}>
             <Image
               src={back4app}
@@ -74,9 +62,6 @@ function Experience() {
               <p className='text-xxs'>Jun 2023 - Present</p>
             </div>
           </Link>
-        </div>
-        <div className="my-1.5">
-          <p className='w-[2px] h-8 bg-gray-200 rounded-lg mx-auto'></p>
         </div>
       </div>
     </div>

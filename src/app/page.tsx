@@ -13,13 +13,13 @@ import BlogPosts from './(components)/BlogPosts';
 
 export default function Home() {
   return (
-    <main className='flex gap-10 py-16'>
-      <div className='flex flex-col gap-10 justify-between w-4/12'>
+    <main className='flex items-center justify-center p-14 h-svh w-screen overflow-hidden'>
+      <div className='flex flex-col gap-24 mr-10 justify-between w-4/12 '>
         <div className='flex flex-col gap-8'>
           <Image
             src={profile}
             alt='profile'
-            width={200}
+            width={190}
             height={100}
             className='rounded-md'
           />
@@ -115,7 +115,7 @@ export default function Home() {
       </div>
 
       <div className=' text-[#727270] grid grid-cols-8 gap-x-3 w-9/12 gap-y-5'>
-        <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
+        <div className='bg-[#F5F4F2] pb-1 p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
           <p className='flex items-center gap-1 px-1  bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
             <Icon
               icon='mingcute:briefcase-fill'
@@ -195,7 +195,7 @@ export default function Home() {
             />
             Featured blog posts
           </p>
-          <div className='overflow-y-auto h-[calc(100%-2rem)] scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-[#E9E8E6] scrollbar-track-rounded-full scrollbar-thumb-rounded-full pr-2'>
+          <div className='overflow-y-auto h-[calc(100%-0.8rem)] scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-transparent scrollbar-thumb-rounded-full pr-2'>
             <BlogPosts />
           </div>
         </div>

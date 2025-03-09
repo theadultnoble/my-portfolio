@@ -7,22 +7,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: monospace;
   }
 
   body {
     background-color: #f0efeb;
     overflow: hidden;
+    height: 100vh;
+
+    
   }
 
   .container {
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
     /* inline-size: 95%;
     margin: auto; */
-    width: 95vw;
-    height: 95vh;
-    margin: 40px;
-    overflow: hidden;
+    /* width: 95vw;
+    height: 95vh; */
+    /* margin: 40px; */
+
   }
 
   .scrollbar-w-none {
