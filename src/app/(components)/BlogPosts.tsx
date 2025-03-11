@@ -10,8 +10,14 @@ const BlogPosts = () => {
   };
 
   return (
-    <div className='pr-2'>
-      <div className='flex flex-col divide-y divide-[#DBDAD6]'>
+    <div className='pr-2 relative overflow-hidden'>
+      <div className='absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#F5F4F2] to-transparent pointer-events-none transition-opacity duration-300 opacity-0' id='fadeEffect'></div>
+      <div className='flex flex-col divide-y divide-[#DBDAD6]' onScroll={(e) => {
+        const fadeEffect = document.getElementById('fadeEffect');
+        if (fadeEffect) {
+          fadeEffect.style.opacity = e.currentTarget.scrollTop > 0 ? '1' : '0';
+        }
+      }}>
         {data.map((item) => {
           return (
             <div key={item.id} className='flex gap-2 py-2'>

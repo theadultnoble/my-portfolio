@@ -1,28 +1,30 @@
 'use client';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import WebPlayBack from './WebPlayBack';
 
 export default function Listening() {
-  const [token, setToken] = useState(null);
+
+
+  const [accessToken, setAccessToken] = React.useState(null);
 
   useEffect(() => {
-    console.log('Listening component mounted'); // Check if the component is mounted
-    async function fetchData() {
-      console.log('Fetching token...'); // Check if useEffect is running
+    async function getAccessToken() {
       try {
         const response = await fetch('/api/token');
-        console.log('Response received:', response); // Check if the response is received
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
         const data = await response.json();
-
-        setToken(data.access_token);
+        setAccessToken(data.access_token);
       } catch (error) {
-        console.error('Error:', error);
+        console.error('This is my Error:', error);
       }
     }
-    fetchData();
+    getAccessToken();
   }, []);
-  return <div className='overflow-auto'>Spotify Token: {token ? token : '..loading token'}</div>;
+
+  return (
+    <div className='overflow-auto'>
+      {(accessToken !== null && accessToken !== undefined
+) ? <WebPlayBack access_token={accessToken} /> : 'No access token' }
+    </div>
+  )
 }
