@@ -1,55 +1,72 @@
 'use client'
-import {useEffect, useState, useRef } from 'react'
+import {useEffect, useState } from 'react'
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import DieLit from '/public/assets/Die_Lit.jpg'
 
 export default function WebPlayBack(props) {  
   const [isPlaying, setIsPlaying] = useState(false);
-  const playerRef = useRef(null);
+  const [play, setPLay] = useState(undefined)
   
   // const [Player, setPlayer] = useState();
   //  const [playerState, setPlayerState] = useState({ trackIndex: 0, timestamp: 0, volume: 0.5 });
+  function handlePlay(){
+    setIsPlaying(!isPlaying)
+    console.log(play)
+
+  }
 
  useEffect(()=>{
+    if (window.Spotify) return initPlayer(); // If SDK is already loaded
+
     const script =  document.createElement('script');
     script.src = "https://sdk.scdn.co/spotify-player.js";
     script.async = true;
-  
     document.body.appendChild(script);
+    // Load Script check
+    script.onload = initPlayer;
+    script.onerror = () => console.error("Spotify SDK failed to load");
+    window.onSpotifyWebPlaybackSDKReady = initPlayer;
+    
 
-    window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = props.access_token;
-        const player = new Spotify.Player({
-          name: 'Web Playback SDK Quick Start Player',
-          getOAuthToken: cb => { cb(token); },
-          volume: 0.5
-        });
-        player.connect();
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-          console.log('Ready with Device ID', device_id);
-        });
-      
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-          console.log('Device ID has gone offline', device_id);
-        });
+    function initPlayer() {
+      if(!window.Spotify) return console.error("Spotify SDK unavailable");
 
-        player.addListener('initialization_error', ({ message }) => {
-          console.error(message);
+      const token = props.access_token;
+      console.log(token)
+      const player = new Spotify.Player({
+        name: 'Web Playback SDK Quick Start Player',
+        getOAuthToken: cb => { cb(token); },
+        volume: 0.5
       });
-      
-      playerRef.current = player;
-      player.togglePlay();
-    }
-  }, [props.access_token]);
 
-  function handlePlay(){
-    if (playerRef.current) {
-      playerRef.current.togglePlay();
+      player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+      });
+    
+      // Not Ready
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device offline', device_id);
+      });
+
+      player.addListener('initialization_error', ({ message }) => {
+        console.error(message);
+      });
+      player.addListener('authentication_error', ({ message }) => console.error("Auth Error:", message));
+
+      //Connect Player
+      player.connect().then(success =>{
+      if(success){
+        console.log("The Web Playback SDK successfully connected to Spotify!")
+      }
+      }).catch(error => console.log('Error:', error));
+
+      setPLay(player);
     }
-  }
+
+    
+  }, []);
+
 
   return (
     <div className='overflow-hidden flex mt-3'>
@@ -80,8 +97,7 @@ export default function WebPlayBack(props) {
             />
           </button>
           <button onClick={() => {
-            setIsPlaying(!isPlaying);
-            handlePlay();
+           handlePlay()
           }}>
             <Icon
               icon={isPlaying ? 'fluent:pause-24-filled' : 'fluent:play-24-filled'}
