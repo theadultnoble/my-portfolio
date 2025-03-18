@@ -1,15 +1,17 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
 
-const SPOTIFY_PLAYLIST_ID = '1s8c0X3WPWkHg7h0xKaqfw'; // Replace with your actual playlist ID
-const SPOTIFY_API_URL = `https://api.spotify.com/v1/playlists/${SPOTIFY_PLAYLIST_ID}`;
+const SPOTIFY_PLAYLIST_ID = '76Xa7jErorQFcZkrCJZDzz'; // Replace with your actual playlist ID
+const SPOTIFY_API_URL = `https://api.spotify.com/v1/playlists/${SPOTIFY_PLAYLIST_ID}/tracks`;
 
-export async function GET() {
-  const tokenResponse = await fetch('http://localhost:3000/api/token'); 
+export async function GET(request) {
+  const tokenUrl = new URL('/api/token', request.url).toString();
+  const tokenResponse = await fetch(tokenUrl); 
   const { access_token } = await tokenResponse.json();
 
   try {
     const response = await axios.get(SPOTIFY_API_URL, {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${access_token}`,
       },

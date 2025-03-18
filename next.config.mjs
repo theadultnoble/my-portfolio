@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ["i.scdn.co"], // Allow images from Spotify
+  },
+};
 
 if (process.env.MIGHTYMELD) {
   const { options } = await import('@mightymeld/swc-plugin/options');
