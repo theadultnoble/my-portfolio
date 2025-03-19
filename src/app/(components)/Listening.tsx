@@ -38,7 +38,7 @@ export default function Listening() {
   return (
     <div className='overflow-auto'>
       {(accessToken !== null && accessToken !== undefined
-) ? <WebPlayBack access_token={accessToken} trackS = {tracks}/> : 'No access token' }
+        ) ? <WebPlayBack access_token={accessToken} trackS = {tracks}/> : 'No access token' }
     </div>
   )
 }

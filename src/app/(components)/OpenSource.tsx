@@ -6,7 +6,8 @@ import data from "@/data/opensource.json";
 import { MoveRightIcon } from "lucide-react";
 import { MoveLeftIcon } from "lucide-react";
 import OpenZepellin from "/public/assets/OpenZeppellin.png";
-import Dacade from "/public/assets/dacade_og.png"
+import Dacade from "/public/assets/dacade_og.png";
+import Link from "next/link";
 
 const OpenSource = () => {
   const [display, setDisplay] = React.useState(1);
@@ -23,18 +24,22 @@ const OpenSource = () => {
   return (
     <div className=" h-36 overflow-y-scroll scrollbar-none mt-3">
       {display === 1 && (
-        <Image
-          src={OpenZepellin}
-          alt="openzepelin"
-          className="w-11/12 rounded-lg h-9 border border-[#DBDAD6]"
-        />
+        <Link href="/OpenSource">
+          <Image
+            src={OpenZepellin}
+            alt="openzepelin"
+            className="w-11/12 rounded-lg h-9 border border-[#DBDAD6]"
+          />
+        </Link>
       )}
       {display === 2 && (
-        <Image
-          src={Dacade}
-          alt="dacade"
-          className="w-11/12 rounded-lg h-9 border border-[#DBDAD6]"
-        />
+        <Link href="/OpenSource">
+          <Image
+            src={Dacade}
+            alt="dacade"
+            className="w-11/12 rounded-lg h-9 border border-[#DBDAD6]"
+          />
+        </Link>
       )}
       <div className="flex">
         {display === 2 && (
