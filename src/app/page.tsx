@@ -14,7 +14,7 @@ import Projects from './(components)/Projects';
 
 export default function Home() {
   return (
-    <main className='flex items-center justify-center p-14 h-svh w-screen overflow-hidden'>
+    <main className='flex items-center justify-center p-14 h-svh w-screen'>
       <div className='flex flex-col gap-24 mr-10 justify-between w-4/12 '>
         <div className='flex flex-col gap-8'>
           <Image
