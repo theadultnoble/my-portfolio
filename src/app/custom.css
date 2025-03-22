@@ -10,22 +10,22 @@
     padding-right: 20px; /* Set horizontal padding */
     perspective: 1000px; /* Creates the 3D perspective */
     perspective-origin: -100% -500%;  
-    gap: 10px; /* Viewpoint from top-right */
+   /* Viewpoint from top-right */
   }
 
 .image-view {
     height: 78px;
-    width: 100px;
+    width: 90px;
     transition: transform 0.5s ease; /* Smooth transition for any future changes */
     transform: rotateY(-35deg) rotateX(0deg) translateZ(0px);
-    z-index: 2;
     background: #fff; /* Card background color */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
   
      /* Adjusted for a more dynamic perspective */
 }
 
 .image-view:hover {
-    transform: rotateY(-35deg) rotateX(0deg) translateZ(10px); ;
-    margin-right: 10px; /* Increase space between images on hover */
+    transform: rotateY(-35deg) rotateX(0deg) translateZ(5px) translateY(-10px) translateX(5px);
+   /* Increase space between images on hover */
 }

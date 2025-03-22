@@ -9,8 +9,8 @@ import Link from 'next/link';
 function Experience() {
   return (
     <Link href={'/Experience'}>
-    <div className='mt-1 h-36 relative'>
-      <div className='absolute top-0 left-0 right-2 h-5 bg-gradient-to-b from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
+    <div className='mt-2 h-36 relative'>
+      <div className='absolute top-0 left-0 right-2 bg-gradient-to-b from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
       <div className='absolute bottom-0 left-0 right-2 h-5 bg-gradient-to-t from-[#F5F4F2] to-transparent pointer-events-none z-10 '></div>
       <div className='h-full px-2 overflow-y-auto scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-transparent scrollbar-thumb-rounded-full'>
         <div className='flex items-center pb-2'>
