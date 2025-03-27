@@ -26,13 +26,5 @@ export const experienceType = defineType({
       type: 'array',
       of: [{type: 'block'}],
     }),
-    defineField({
-      name: 'tenure',
-      type: 'date',
-      options: {
-        dateFormat: 'YYYY-MM-DD',
-      },
-      validation: (rule) => rule.required(),
-    }),
   ],
 })
