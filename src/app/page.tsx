@@ -1,4 +1,3 @@
-'use client';
 import Image from 'next/image';
 import profile from '/public/assets/Profile.jpeg';
 import Link from 'next/link';
@@ -136,7 +135,7 @@ export default function Home() {
             />
             Projects
           </p>
-          <Projects/>
+          <Projects />
         </div>
         <div className='bg-[#F5F4F2] p-2 col-span-2 rounded-lg border-2 border-[#DBDAD6]'>
           <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>

@@ -5,10 +5,8 @@ import WebPlayBack from './WebPlayBack';
 // import useSWR from 'swr';
 
 export default function Listening() {
-
-
   const [accessToken, setAccessToken] = React.useState(null);
-  const [tracks, setTracks] = React.useState()
+  const [tracks, setTracks] = React.useState();
 
   useEffect(() => {
     async function getAccessToken() {
@@ -33,12 +31,13 @@ export default function Listening() {
     getAccessToken();
   }, []);
 
-  console.log(tracks)
-
   return (
     <div className='overflow-auto'>
-      {(accessToken !== null && accessToken !== undefined
-        ) ? <WebPlayBack access_token={accessToken} trackS = {tracks}/> : 'No access token' }
+      {accessToken !== null && accessToken !== undefined ? (
+        <WebPlayBack access_token={accessToken} trackS={tracks} />
+      ) : (
+        'No access token'
+      )}
     </div>
-  )
+  );
 }

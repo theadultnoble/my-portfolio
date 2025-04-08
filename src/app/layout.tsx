@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
-import { SanityLive } from '@/sanity/live';
+import { SanityLive } from '@/app/sanity/live';
 import './globals.css';
 
 const montserrat = Montserrat({
