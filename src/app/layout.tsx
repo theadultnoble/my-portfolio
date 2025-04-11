@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
-import { SanityLive } from '@/app/sanity/live';
+import { SanityLive } from '@/sanity/live';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -22,10 +22,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={montserrat.className}>
-        <div className='container'>
-          {children}
-          <SanityLive />
-        </div>
+        <div className='container'>{children}</div>
+        <SanityLive />
       </body>
     </html>
   );

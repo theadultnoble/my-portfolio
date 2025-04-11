@@ -1,5 +1,5 @@
 import { defineLive } from 'next-sanity';
-import { client } from '@/app/sanity/client';
+import { client } from '@/sanity/client';
 
 export const { sanityFetch, SanityLive } = defineLive({
   client: client.withConfig({ apiVersion: 'vX' }),
