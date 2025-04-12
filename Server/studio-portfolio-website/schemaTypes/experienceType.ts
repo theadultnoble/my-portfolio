@@ -26,5 +26,30 @@ export const experienceType = defineType({
       type: 'array',
       of: [{type: 'block'}],
     }),
+    defineField({
+      name: 'startDate',
+      title: 'Start Date',
+      type: 'date', // Or "datetime" if you want timestamps
+      validation: (rule) => rule.required(),
+      options: {
+        dateFormat: 'MMM YYYY',
+      },
+    }),
+    defineField({
+      name: 'endDate',
+      title: 'End Date',
+      type: 'date', // Or "datetime" if you want timestamps
+      options: {
+        dateFormat: 'MMM YYYY',
+      },
+      validation: (rule) =>
+        rule.custom((endDate, {document}) => {
+          const startDate = document?.startDate
+          if (startDate && endDate && endDate < startDate) {
+            return 'End date must be after start date'
+          }
+          return true
+        }),
+    }),
   ],
 })
