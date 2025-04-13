@@ -17,8 +17,8 @@ export const blogPostType = defineType({
     }),
     defineField({
       name: 'body',
-      type: 'array',
-      of: [{type: 'block'}],
+      type: 'text',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'URL',

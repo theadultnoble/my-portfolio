@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import { defineQuery } from 'next-sanity';
 import { sanityFetch } from '@/sanity/live';
 import imageUrlBuilder from '@sanity/image-url';
 import { client } from '@/sanity/client'; //
@@ -8,9 +7,7 @@ import { client } from '@/sanity/client'; //
 import Link from 'next/link';
 import { format } from 'date-fns';
 
-const GROQ_QUERY = defineQuery(
-  `*[_type == "experience" && defined(slug.current)]{_id, title, slug, image, startDate, endDate}`
-);
+import { EXPERIENCE_QUERY } from '@/sanity/queries';
 
 const builder = imageUrlBuilder(client);
 
@@ -19,12 +16,11 @@ export function urlFor(source: any) {
 }
 
 async function Experience() {
-  console.log('👋 Experience component mounted');
-  const result = await sanityFetch({ query: GROQ_QUERY });
+  const result = await sanityFetch({ query: EXPERIENCE_QUERY });
   console.log('RAW', JSON.stringify(result, null, 2));
 
   const { data: events } = await sanityFetch({
-    query: GROQ_QUERY,
+    query: EXPERIENCE_QUERY,
   });
 
   return (
