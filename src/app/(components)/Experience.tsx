@@ -16,9 +16,6 @@ export function urlFor(source: any) {
 }
 
 async function Experience() {
-  const result = await sanityFetch({ query: EXPERIENCE_QUERY });
-  console.log('RAW', JSON.stringify(result, null, 2));
-
   const { data: events } = await sanityFetch({
     query: EXPERIENCE_QUERY,
   });

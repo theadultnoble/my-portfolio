@@ -38,6 +38,7 @@ export default function ClientSideBlog({ blogPosts }: { blogPosts: any[] }) {
                   alt={title}
                   width={90} // Fixed width
                   height={70} // Fixed height
+                  unoptimized
                   className='rounded-md flex-shrink-0 object-cover'
                 />
               </Link>

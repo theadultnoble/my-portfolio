@@ -23,8 +23,7 @@ export const projectType = defineType({
     }),
     defineField({
       name: 'body',
-      type: 'array',
-      of: [{type: 'block'}],
+      type: 'text',
     }),
     defineField({
       name: 'URL',
