@@ -28,3 +28,7 @@
     translateX(5px);
   /* Increase space between images on hover */
 }
+
+.experience-height {
+  height: 200px;
+}

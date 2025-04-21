@@ -21,7 +21,7 @@ async function Experience() {
   });
 
   return (
-    <Link href={'/Experience'}>
+    <Link href={'/pages/Experience'}>
       <div className='mt-2 h-36 relative'>
         <div className='absolute top-0 left-0 right-2 bg-gradient-to-b from-[#F5F4F2] to-transparent pointer-events-none z-10'></div>
         <div className='absolute bottom-0 left-0 right-2 h-5 bg-gradient-to-t from-[#F5F4F2] to-transparent pointer-events-none z-10 '></div>
