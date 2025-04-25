@@ -1,7 +1,7 @@
 import { defineQuery } from 'next-sanity';
 
 export const EXPERIENCE_QUERY = defineQuery(
-  `*[_type == "experience" && defined(slug.current)]{_id, title, slug, image, startDate, endDate}`
+  `*[_type == "experience" && defined(slug.current)]{_id, title, slug, image, startDate, endDate, body}`
 );
 
 export const BLOG_QUERY = defineQuery(
