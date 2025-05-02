@@ -19,12 +19,11 @@ async function ExperiencePage() {
   const { data: events } = await sanityFetch({
     query: EXPERIENCE_QUERY,
   });
-  console.log(events)
+
   return (
-    <div className='flex p-10 h-svh w-screen overflow-y-auto'>
-      <div className='pt-10 h-40 w-full flex '>
-        {/* Back Button */}
-        <Link href="/">
+    <div className='flex p-10 h-svh w-screen overflow-y-auto scrollbar-hide'>
+      {/* Back Button */}
+      <Link href='/'>
         <div className='items-center gap-2 mb-6'>
           <button className='flex items-center gap-1 px-4 py-2 bg-[#E9E8E6] rounded-full border border-[#DBDAD6] text-sm text-[#464644]'>
             <Icon
@@ -35,46 +34,57 @@ async function ExperiencePage() {
             <span className='text-xs font-medium'>Back</span>
           </button>
         </div>
-        </Link>
-      
+      </Link>
 
-        {/* Title Section */}
-        <div className='flex flex-col text-center mb-10 w-full'>
-          <h1 className='text-3xl font-semibold text-[#464644]'>Experience</h1>
-          <p className='text-xs text-[#727270] mt-4'>
-            Use the arrow keys to navigate between projects.
-          </p>
+      {/* Title Section */}
+      <div className='flex flex-col text-center mb-10 w-full'>
+        <h1 className='text-3xl font-semibold text-[#464644]'>Experience</h1>
+        <p className='text-xs text-[#727270] mt-4'>
+          Use the arrow keys to navigate between projects.
+        </p>
+      </div>
+
+      <div className='flex flex-col border-neutral-950 gap-5 w-[65vh] absolute left-14 top-80'>
+        <div className='text-lg font-'>Work Experience</div>
+        <div className='relative flex flex-col gap-2'>
+          {events.map(({ _id, title, image, startDate, endDate, body }) => {
+            // Debug log
+            console.log('Body structure:', JSON.stringify(body, null, 2));
+
+            return (
+              <div key={_id} className='relative flex items-center pb-5 gap-2'>
+                <div className='relative mr-3 ml-3 h-[45px] w-[45px] flex-shrink-0'>
+                  <Image
+                    src={urlFor(image).width(400).height(400).url()}
+                    alt={title}
+                    fill
+                    className='rounded-full border-2 border-[#DBDAD6]  object-cover'
+                    sizes='60px'
+                  />
+                </div>
+                <div className='flex flex-col gap-1'>
+                  <p className='font-mono text-xl text-[#464644]'>{title}</p>
+                  <p className='text-sm text-[#727270]'>
+                    {format(new Date(startDate), 'MMM yyyy')} -{' '}
+                    {endDate
+                      ? format(new Date(endDate), 'MMM yyyy')
+                      : 'Present'}
+                  </p>
+                  <div className='text-xf text-[#727270]'>
+                    {typeof body === 'string'
+                      ? body
+                      : Array.isArray(body)
+                        ? body[0]?.children?.[0]?.text || ''
+                        : ''}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className='flex flex-col h-[70vh] border border-neutral-950 gap-10 w-[70vh] fixed bottom-0 left-10'>
-        <div className='text-lg'>Work Experience</div>
-        <div>
-          {events.map(({ _id, title, image, startDate, endDate, body }) => (
-     
-            <div key={_id} className='relative flex items-center pb-5 gap-2'>
-              <div className='relative'>
-                <Image
-                  src={urlFor(image).width(100).height(100).url()}
-                  alt={title}
-                  width={50}
-                  height={50}
-                  className='rounded-full border border-[#DBDAD6] relative z-10'
-                />
-              </div>
-              <div>
-                <p className='font-mono text-base text-[#464644]'>{title}</p>
-                <p className='text-sm'>
-                  {format(new Date(startDate), 'MMM yyyy')} -{' '}
-                  {endDate ? format(new Date(endDate), 'MMM yyyy') : 'Present'}
-                </p>
-              </div>
-              <p className='text-xxs'>{body}</p>
 
-            </div>
-          ))}
-        </div>
-
-      </div>
+      <div className='flex flex-col h-[40vh] border border-[#DBDAD6] bg-[#f7f6f4] rounded-t-lg gap-5 w-[65vh] fixed bottom-0 right-14'></div>
     </div>
   );
 }
