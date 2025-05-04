@@ -19,3 +19,5 @@ export const LEARNING_QUERY = defineQuery(
 export const OPEN_SOURCE_QUERY = defineQuery(
   `*[_type == "opensource" && defined(slug.current)]{_id, title, slug, image, body, URL}`
 );
+
+export const SKILLS_QUERY = defineQuery(`*[_type == "skills"]{_id, title}`);

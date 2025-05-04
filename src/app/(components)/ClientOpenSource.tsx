@@ -31,12 +31,11 @@ const ClientOpenSource = ({ openSource }) => {
       {currentIndex === 0 && (
         <Link href='/OpenSource'>
           <Image
-            src={urlFor(displayData.image).width(100).height(100).url()}
-            width={100}
-            height={70}
+            src={urlFor(displayData.image).width(200).height(200).url()}
             alt={displayData.title}
-            unoptimized
-            className='w-11/12 rounded-lg h-9 border border-[#DBDAD6]'
+            width={90}
+            height={35}
+            className='rounded-lg border border-[#DBDAD6]'
           />
         </Link>
       )}
