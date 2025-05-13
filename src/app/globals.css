@@ -11,12 +11,13 @@
     font-family: monospace;
   }
 
+  @layer utilities {
+  }
+
   body {
     background-color: #f0efeb;
     overflow: hidden;
     height: 100vh;
-
-    
   }
 
   .container {
@@ -28,7 +29,6 @@
     /* width: 95vw;
     height: 95vh; */
     /* margin: 40px; */
-
   }
 
   .scrollbar-w-none {

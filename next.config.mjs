@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["i.scdn.co"], // Allow images from Spotify
+    domains: ['i.scdn.co', 'cdn.sanity.io', 'placehold.co'], // Allow images from Spotify
   },
 };
 

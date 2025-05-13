@@ -11,9 +11,6 @@ export async function GET() {
     const clientID = process.env.SPOTIFY_CLIENT_ID;
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 
-    // console.log('Client ID:', process.env.SPOTIFY_CLIENT_ID);
-    // console.log('Client Secret:', process.env.SPOTIFY_CLIENT_SECRET);
-
     var tokenOptions = {
       method: 'POST',
       url: 'https://accounts.spotify.com/api/token',
@@ -27,7 +24,6 @@ export async function GET() {
     cachedToken = data.access_token;
     tokenExpiry = now + data.expires_in * 1000;
 
-    // console.log(cachedToken);
     return NextResponse.json({ access_token: cachedToken });
   }
 }

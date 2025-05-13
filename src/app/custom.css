@@ -1,0 +1,34 @@
+.card-container {
+  overflow-y: scroll;
+  height: 9rem;
+  scrollbar-width: none;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20px; /* Set horizontal padding */
+  padding-right: 20px; /* Set horizontal padding */
+  perspective: 1000px; /* Creates the 3D perspective */
+  perspective-origin: -100% -500%;
+  /* Viewpoint from top-right */
+}
+
+.image-view {
+  transition: transform 0.5s ease; /* Smooth transition for any future changes */
+  transform: rotateY(-35deg) rotateX(0deg) translateZ(0px);
+  background: #fff; /* Card background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+
+  /* Adjusted for a more dynamic perspective */
+}
+
+.image-view:hover {
+  transform: rotateY(-35deg) rotateX(0deg) translateZ(5px) translateY(-10px)
+    translateX(5px);
+  /* Increase space between images on hover */
+}
+
+.experience-height {
+  height: 200px;
+}

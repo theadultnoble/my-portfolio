@@ -1,0 +1,30 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# cursorrules.mdc
+# Description: These rules lock down automatic changes in Cursor.
+# Cursor will only modify files or sections when explicitly instructed.
+
+rules:
+  - globs: ["**/*"]  # Applies to the whole project
+
+    # Rule 1: Never touch anything unless asked
+    allow-edits: false
+    description: "Don't change anything unless I directly tell you to."
+
+    # Rule 2: No auto-refactoring, auto-renaming, or smart suggestions
+    allow-renaming: false
+    allow-reordering: false
+    allow-formatting: false
+    allow-fixing: false
+    allow-generating-tests: false
+    allow-creating-files: false
+    allow-deleting-files: false
+
+    # Rule 3: Comments are okay, just don’t act on them
+    allow-adding-comments: true
+    description: "You can suggest in comments, but don’t modify code directly."
+
+# TL;DR: Cursor can watch, it can whisper, but it doesn’t get to touch unless invited.

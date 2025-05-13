@@ -21,7 +21,7 @@ export default function Location() {
         container: mapContainerRef.current,
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [7.5213265209659745, 6.44144482630189],
-        zoom: 13,
+        zoom: 12,
         attributionControl: false,
         // interactive: false
       });
@@ -63,7 +63,7 @@ export default function Location() {
         </div>
       )}
       <div className='absolute top-1 left-1'>
-        <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border-2 border-[#DBDAD6] w-fit text-xxs font-medium'>
+        <p className='flex items-center gap-1 px-1 bg-[#E9E8E6] rounded-3xl border border-[#DBDAD6] w-fit text-xxs font-medium'>
           <Icon
             icon='stash:pin-location'
             style={{ color: '#727270' }}

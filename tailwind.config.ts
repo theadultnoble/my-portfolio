@@ -9,6 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontSize: {
+        xm: '0.7rem',
+        xf: '0.6rem',
         xxs: '0.5rem',
         xxxs: '0.3rem',
       },
