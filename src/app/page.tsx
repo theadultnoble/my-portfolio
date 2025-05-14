@@ -1,3 +1,4 @@
+import React from 'react'; // 
 import Image from 'next/image';
 import profile from '/public/assets/Profile.jpeg';
 import Link from 'next/link';
@@ -7,11 +8,14 @@ import Learning from './(components)/Learning';
 import Listening from './(components)/Listening';
 import Location from './(components)/Location';
 import { Icon } from '@iconify/react';
-import OpenSource from './(components)/OpenSource';
-import BlogPosts from './(components)/BlogPosts';
+import OpenSource from './(components)/openSourceComp/OpenSource';
+import BlogPosts from './(components)/blogComp/BlogPosts';
 import Projects from './(components)/Projects';
+import ExperiencePage from './pages/Experience/page';
+import OpenSourcePage from './pages/OpenSource/page';
 
 export default function Home() {
+  // const [activePage, setActivePage] = React.useState<null|string>(null);
   return (
     <main className='flex items-center justify-center p-14 h-svh w-screen'>
       <div className='flex flex-col gap-24 mr-10 justify-between w-4/12 '>

@@ -25,7 +25,7 @@ async function Projects() {
   return (
     <div className='card-container'>
       {projects.map(({ _id, image }) => (
-        <Link key={_id} href='/Projects'>
+        <Link key={_id} href='/pages/Projects'>
           <Image
             height={78}
             width={100}

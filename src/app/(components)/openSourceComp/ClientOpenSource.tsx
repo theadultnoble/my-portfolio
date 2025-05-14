@@ -29,7 +29,7 @@ const ClientOpenSource = ({ openSource }) => {
   return (
     <div className=' h-36 overflow-y-scroll scrollbar-none mt-3'>
       {currentIndex === 0 && (
-        <Link href='/OpenSource'>
+        <Link href='/pages/OpenSource'>
           <Image
             src={urlFor(displayData.image).width(200).height(200).url()}
             alt={displayData.title}
@@ -40,7 +40,7 @@ const ClientOpenSource = ({ openSource }) => {
         </Link>
       )}
       {currentIndex === 1 && (
-        <Link href='/OpenSource'>
+        <Link href='/pages/OpenSource'>
           <Image
             src={urlFor(displayData.image).width(300).height(300).url()}
             width={90}
