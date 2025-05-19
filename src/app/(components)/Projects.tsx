@@ -27,9 +27,9 @@ async function Projects() {
       {projects.map(({ _id, image }) => (
         <Link key={_id} href='/pages/Projects'>
           <Image
-            height={78}
-            width={100}
-            src={urlFor(image).width(300).height(300).url()}
+            height={90}
+            width={150}
+            src={urlFor(image).width(200).height(200).url()}
             alt='openzepelin'
             className='image-view'
           />

@@ -48,12 +48,12 @@ function ClientExperience({events, skills}) {
                 style={{ color: '#727270' }}
                 width={17}
               />
-              <span className='text-xs font-medium'>Back</span>
+              <span className='text-xs font-medium'>Back to home</span>
             </button>
           </div>
         </Link>
         {/* Title Section */}
-        <div className='flex flex-col text-center mb-10 w-full'>
+        <div className='flex flex-col text-center mt-mt-14 mb-10 w-full'>
           <h1 className='text-3xl font-semibold text-[#464644]'>Experience</h1>
           <p className='text-xs text-[#727270] mt-4'>
             Use the arrow keys to navigate between projects.

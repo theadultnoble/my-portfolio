@@ -8,27 +8,28 @@
   align-items: center;
   padding-left: 20px; /* Set horizontal padding */
   padding-right: 20px; /* Set horizontal padding */
-  perspective: 1000px; /* Creates the 3D perspective */
-  perspective-origin: -100% -500%;
-  /* Viewpoint from top-right */
+  perspective: 300px; /* Creates the 3D perspective */
+  perspective-origin:0% 0%; /* Viewpoint from top-left */
+  gap: 14px; /* Space between cards */
 }
 
 .image-view {
   transition: transform 0.5s ease; /* Smooth transition for any future changes */
-  transform: rotateY(-35deg) rotateX(0deg) translateZ(0px);
+  transform: rotateY(-30deg) rotateX(5deg) translateZ(0) scale(1.2);
   background: #fff; /* Card background color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-
-  /* Adjusted for a more dynamic perspective */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-right: -10px; /* Creates overlapping effect */
+  will-change: transform; /* Optimizes for animations */
+  transform-origin: left top; /* Sets rotation origin */
 }
 
 .image-view:hover {
-  transform: rotateY(-35deg) rotateX(0deg) translateZ(5px) translateY(-10px)
-    translateX(5px);
-  /* Increase space between images on hover */
+  transform: rotateY(-30deg) rotateX(5deg) translateZ(30px) scale(1.25);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Brings the hovered card to the front */
 }
 
 .experience-height {
-  height: 200px;
+  height: 100px;
 }
