@@ -1,11 +1,12 @@
 .card-container {
-  overflow-y: scroll;
+  overflow-y: visible;
   height: 9rem;
   scrollbar-width: none;
   margin-top: 0.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   padding: 12px 16px; /* Added proper padding for top/bottom and left/right */
   perspective: 600px; /* Enhanced 3D perspective */
   perspective-origin: 50% 50%; /* Center viewpoint for better depth */
@@ -14,17 +15,11 @@
 
 .image-view {
   position: relative;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bounce transition */
-  transform: rotateY(-25deg) rotateX(8deg) translateZ(0) scale(1.1);
-  background: #fff; /* Card background color */
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.1),
-    0 8px 20px rgba(0, 0, 0, 0.12); /* Layered shadows for depth */
-  margin-right: -35px; /* Much tighter overlapping effect */
-  will-change: transform; /* Optimizes for animations */
-  transform-origin: center center; /* Center rotation origin */
-  z-index: 10; /* Base z-index for first image */
-  overflow: hidden; /* Ensures clean borders */
+  transform-style: preserve-3d;
+  background: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  transform-origin: top left;
 }
 
 .image-view:nth-child(2) {

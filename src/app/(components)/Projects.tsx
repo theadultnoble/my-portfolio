@@ -41,12 +41,11 @@ async function Projects() {
   }
 
   return (
-    <div className="card-container">
+    <div className="card-container w-fill ">
       {projects.map((project: Project) => (
         <Link
           key={project._id}
-          href={project.URL || `/projects/${project.slug.current}`}
-          target={project.URL ? "_blank" : "_self"}
+          href={`/pages/Projects`}
           rel={project.URL ? "noopener noreferrer" : ""}
           className="image-view"
         >
