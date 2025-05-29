@@ -50,10 +50,10 @@ async function Projects() {
           className="image-view"
         >
           <Image
-            src={urlFor(project.image).width(240).height(180).url()}
+            src={urlFor(project.image).width(320).height(140).url()}
             alt={project.title}
-            width={180}
-            height={75}
+            width={240}
+            height={60}
             className="experience-height"
             style={{
               objectFit: "cover",
