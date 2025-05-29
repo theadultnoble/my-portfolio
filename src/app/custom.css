@@ -6,30 +6,74 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 20px; /* Set horizontal padding */
-  padding-right: 20px; /* Set horizontal padding */
-  perspective: 300px; /* Creates the 3D perspective */
-  perspective-origin:0% 0%; /* Viewpoint from top-left */
-  gap: 14px; /* Space between cards */
+  padding: 12px 16px; /* Added proper padding for top/bottom and left/right */
+  perspective: 600px; /* Enhanced 3D perspective */
+  perspective-origin: 50% 50%; /* Center viewpoint for better depth */
+  gap: 0px; /* No gap for tight stacking */
 }
 
 .image-view {
-  transition: transform 0.5s ease; /* Smooth transition for any future changes */
-  transform: rotateY(-30deg) rotateX(5deg) translateZ(0) scale(1.2);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bounce transition */
+  transform: rotateY(-25deg) rotateX(8deg) translateZ(0) scale(1.1);
   background: #fff; /* Card background color */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  margin-right: -10px; /* Creates overlapping effect */
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 8px 20px rgba(0, 0, 0, 0.12); /* Layered shadows for depth */
+  margin-right: -35px; /* Much tighter overlapping effect */
   will-change: transform; /* Optimizes for animations */
-  transform-origin: left top; /* Sets rotation origin */
+  transform-origin: center center; /* Center rotation origin */
+  z-index: 10; /* Base z-index for first image */
+  overflow: hidden; /* Ensures clean borders */
+}
+
+.image-view:nth-child(2) {
+  z-index: 9;
+}
+.image-view:nth-child(3) {
+  z-index: 8;
+}
+.image-view:nth-child(4) {
+  z-index: 7;
+}
+.image-view:nth-child(5) {
+  z-index: 6;
+}
+.image-view:nth-child(6) {
+  z-index: 5;
+}
+.image-view:nth-child(7) {
+  z-index: 4;
+}
+.image-view:nth-child(8) {
+  z-index: 3;
+}
+.image-view:nth-child(9) {
+  z-index: 2;
+}
+.image-view:nth-child(10) {
+  z-index: 1;
 }
 
 .image-view:hover {
-  transform: rotateY(-30deg) rotateX(5deg) translateZ(30px) scale(1.25);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
-  z-index: 10; /* Brings the hovered card to the front */
+  transform: rotateY(-25deg) rotateX(8deg) translateZ(20px) translateY(-6px)
+    scale(1.15);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    0 15px 35px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.image-view:hover + .image-view {
+  transform: rotateY(-25deg) rotateX(8deg) translateZ(5px) scale(1.05);
 }
 
 .experience-height {
-  height: 100px;
+  height: 65px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-view:hover .experience-height {
+  transform: scale(1.02); /* Subtle image scale on hover */
 }
