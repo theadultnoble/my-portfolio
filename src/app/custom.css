@@ -1,34 +1,74 @@
 .card-container {
-  overflow-y: scroll;
+  overflow-y: visible;
   height: 9rem;
   scrollbar-width: none;
   margin-top: 0.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 20px; /* Set horizontal padding */
-  padding-right: 20px; /* Set horizontal padding */
-  perspective: 1000px; /* Creates the 3D perspective */
-  perspective-origin: -100% -500%;
-  /* Viewpoint from top-right */
+  justify-content: center;
+  padding: 12px 16px; /* Added proper padding for top/bottom and left/right */
+  perspective: 600px; /* Enhanced 3D perspective */
+  perspective-origin: 50% 50%; /* Center viewpoint for better depth */
+  gap: 0px; /* No gap for tight stacking */
 }
 
 .image-view {
-  transition: transform 0.5s ease; /* Smooth transition for any future changes */
-  transform: rotateY(-35deg) rotateX(0deg) translateZ(0px);
-  background: #fff; /* Card background color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+  position: relative;
+  transform-style: preserve-3d;
+  background: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  transform-origin: top left;
+}
 
-  /* Adjusted for a more dynamic perspective */
+.image-view:nth-child(2) {
+  z-index: 9;
+}
+.image-view:nth-child(3) {
+  z-index: 8;
+}
+.image-view:nth-child(4) {
+  z-index: 7;
+}
+.image-view:nth-child(5) {
+  z-index: 6;
+}
+.image-view:nth-child(6) {
+  z-index: 5;
+}
+.image-view:nth-child(7) {
+  z-index: 4;
+}
+.image-view:nth-child(8) {
+  z-index: 3;
+}
+.image-view:nth-child(9) {
+  z-index: 2;
+}
+.image-view:nth-child(10) {
+  z-index: 1;
 }
 
 .image-view:hover {
-  transform: rotateY(-35deg) rotateX(0deg) translateZ(5px) translateY(-10px)
-    translateX(5px);
-  /* Increase space between images on hover */
+  transform: rotateY(-25deg) rotateX(8deg) translateZ(20px) translateY(-6px)
+    scale(1.15);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    0 15px 35px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.image-view:hover + .image-view {
+  transform: rotateY(-25deg) rotateX(8deg) translateZ(5px) scale(1.05);
 }
 
 .experience-height {
-  height: 200px;
+  height: 55px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-view:hover .experience-height {
+  transform: scale(1.02); /* Subtle image scale on hover */
 }

@@ -3,13 +3,11 @@ const nextConfig = {
   images: {
     domains: ['i.scdn.co', 'cdn.sanity.io', 'placehold.co'], // Allow images from Spotify
   },
+  webpack(config, { webpack }) {
+    console.log('✅ Using Webpack version:', webpack.version)
+    return config
+  },
 };
 
-if (process.env.MIGHTYMELD) {
-  const { options } = await import('@mightymeld/swc-plugin/options');
-  nextConfig.experimental = {
-    swcPlugins: [['@mightymeld/swc-plugin', options()]],
-  };
-}
 
 export default nextConfig;
