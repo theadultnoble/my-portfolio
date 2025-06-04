@@ -2,17 +2,40 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "@/sanity/client"; //
+import { client } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+
+// Define proper types for Sanity image
+interface SanityImageAsset {
+  _ref: string;
+  _type: "reference";
+}
+
+interface SanityImage {
+  _type: "image";
+  asset: SanityImageAsset;
+}
+
+// Define the BlogPost data structure based on the BLOG_QUERY
+interface BlogPost {
+  _id: string;
+  title: string;
+  image: SanityImage;
+  body: string;
+  URL: string;
+}
 
 const builder = imageUrlBuilder(client);
 
-function urlFor(source: any) {
+function urlFor(source: SanityImage) {
   return builder.image(source);
 }
 
-export default function ClientSideBlog({ blogPosts }: { blogPosts: any[] }) {
-  console.log(blogPosts);
+export default function ClientSideBlog({
+  blogPosts,
+}: {
+  blogPosts: BlogPost[];
+}) {
   const truncateText = (text: string, maxLength: number) => {
     if (text.length <= maxLength) return text;
     return text.substring(0, text.lastIndexOf(" ", maxLength)) + "...";
@@ -30,7 +53,8 @@ export default function ClientSideBlog({ blogPosts }: { blogPosts: any[] }) {
           }
         }}
       >
-        {blogPosts.map(({ _id, title, image, URL, body }) => {
+        {blogPosts.map((post) => {
+          const { _id, title, image, URL, body } = post;
           return (
             <div key={_id} className="flex gap-2 py-2">
               <Link href={URL} target="_blank">

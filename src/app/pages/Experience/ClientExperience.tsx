@@ -6,29 +6,49 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/client";
 import { format } from "date-fns";
 import Link from "next/link";
-import * as THREE from "three";
-import { useRef, useState } from "react";
-import { Canvas, extend, useThree, useFrame } from "@react-three/fiber";
-// import {
-//   BallCollider,
-//   CuboidCollider,
-//   Physics,
-//   RigidBody,
-//   useRopeJoint,
-//   useSphericalJoint,
-// } from '@react-three/rapier';
-// import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
-// import Band from '@/app/(components)/Band';
 
-// extend({ MeshLineGeometry, MeshLineMaterial });
+// Define proper types for Sanity image
+interface SanityImageAsset {
+  _ref: string;
+  _type: "reference";
+}
+
+interface SanityImage {
+  _type: "image";
+  asset: SanityImageAsset;
+}
+
+// Define the Experience data structure
+interface ExperienceEvent {
+  _id: string;
+  title: string;
+  image: SanityImage;
+  startDate: string;
+  endDate?: string;
+  body: string | { children: { text: string }[] }[];
+  slug?: {
+    current: string;
+  };
+}
+
+// Define the Skills data structure
+interface Skill {
+  _id: string;
+  title: string;
+}
 
 const builder = imageUrlBuilder(client);
 
-function urlFor(source: any) {
+function urlFor(source: SanityImage) {
   return builder.image(source);
 }
 
-function ClientExperience({ events, skills }) {
+interface ClientExperienceProps {
+  events: ExperienceEvent[];
+  skills: Skill[];
+}
+
+function ClientExperience({ events, skills }: ClientExperienceProps) {
   return (
     <div className="relative overflow-y-auto scrollbar-hide border-2 w-screen h-[100vh]">
       {/* <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
@@ -61,9 +81,8 @@ function ClientExperience({ events, skills }) {
         <div className="flex p-1 flex-col gap-5 w-[65vh] ml-14 mt-20">
           <div className="text-lg font-medium">Work Experience</div>
           <div className="flex flex-col gap-2">
-            {events.map(({ _id, title, image, startDate, endDate, body }) => {
-              // Debug log
-              console.log("Body structure:", JSON.stringify(body, null, 2));
+            {events.map((event) => {
+              const { _id, title, image, startDate, endDate, body } = event;
 
               return (
                 <div
@@ -75,7 +94,7 @@ function ClientExperience({ events, skills }) {
                       src={urlFor(image).width(400).height(400).url()}
                       alt={title}
                       fill
-                      className="rounded-full border-2 border-[#DBDAD6]  object-cover"
+                      className="rounded-full border-2 border-[#DBDAD6] object-cover"
                       sizes="60px"
                     />
                   </div>
@@ -106,7 +125,7 @@ function ClientExperience({ events, skills }) {
       <div className="flex flex-col border border-[#DBDAD6] bg-[#f7f6f4] rounded-t-lg gap-5 w-[65vh] fixed bottom-0 right-14 p-6">
         <h2 className="text-base font-medium text-[#464644]">Core Skills</h2>
         <div className="flex flex-wrap gap-2 ml-2">
-          {skills?.map((skill) => (
+          {skills?.map((skill: Skill) => (
             <span
               key={skill._id}
               className="px-3 py-1 bg-white rounded-full border border-[#DBDAD6] text-xm text-[#727270]"
