@@ -1,42 +1,31 @@
-'use client';
-import React from 'react';
-import { useEffect } from 'react';
-import WebPlayBack from './WebPlayBack';
-// import useSWR from 'swr';
+"use client";
+import React from "react";
+import useSWR from "swr";
+import WebPlayBack from "./WebPlayBack";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Listening() {
-  const [accessToken, setAccessToken] = React.useState(null);
-  const [tracks, setTracks] = React.useState();
+  // Use SWR for access token and tracks
+  const { data: tokenData, error: tokenError } = useSWR("/api/token", fetcher, {
+    refreshInterval: 55 * 60 * 1000,
+  }); // refresh every 55min
+  const { data: tracks, error: tracksError } = useSWR("/api/playdata", fetcher);
 
-  useEffect(() => {
-    async function getAccessToken() {
-      try {
-        const response = await fetch('/api/token');
-        const data = await response.json();
-        setAccessToken(data.access_token);
-      } catch (error) {
-        console.error('This is my Error:', error);
-      }
-    }
-    async function fetchTracks() {
-      try {
-        const response = await fetch('/api/playdata');
-        const data = await response.json();
-        setTracks(data);
-      } catch (error) {
-        console.error('Error fetching tracks:', error);
-      }
-    }
-    fetchTracks();
-    getAccessToken();
-  }, []);
+  if (tokenError || tracksError) {
+    return <div>Error loading Spotify data.</div>;
+  }
+
+  if (!tokenData || !tracks) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className='overflow-auto'>
-      {accessToken !== null && accessToken !== undefined ? (
-        <WebPlayBack access_token={accessToken} trackS={tracks} />
+    <div className="overflow-auto">
+      {tokenData.access_token ? (
+        <WebPlayBack access_token={tokenData.access_token} trackS={tracks} />
       ) : (
-        'No access token'
+        "No access token"
       )}
     </div>
   );
