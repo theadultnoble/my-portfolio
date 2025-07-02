@@ -6,6 +6,19 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/client";
 import { format } from "date-fns";
 import Link from "next/link";
+import * as THREE from "three";
+import { useRef, useState } from "react";
+import { Canvas, useThree, extend, useFrame } from "@react-three/fiber";
+import {
+  BallCollider,
+  // CuboidCollider,
+  Physics,
+  RigidBody,
+  RapierRigidBody,
+  useRopeJoint,
+  // useSphericalJoint
+} from "@react-three/rapier";
+import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 
 // Define proper types for Sanity image
 interface SanityImageAsset {
@@ -48,15 +61,103 @@ interface ClientExperienceProps {
   skills: Skill[];
 }
 
+extend({ MeshLineGeometry, MeshLineMaterial });
+
+function Band(): JSX.Element {
+  // References for the band and the joints
+  const band = useRef<THREE.Mesh>(null);
+  const fixed = useRef<RapierRigidBody>(null);
+  const j1 = useRef<RapierRigidBody>(null);
+  const j2 = useRef<RapierRigidBody>(null);
+  const j3 = useRef<RapierRigidBody>(null);
+  const j4 = useRef<RapierRigidBody>(null);
+  // Canvas size
+  const { width, height } = useThree((state) => state.size);
+  // A Catmull-Rom curve
+  const [curve] = useState(
+    () =>
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(), // j4
+        new THREE.Vector3(),
+        new THREE.Vector3(),
+        new THREE.Vector3(),
+        new THREE.Vector3(),
+      ])
+  );
+
+  // Create material instance
+  const [material] = useState(
+    () =>
+      new MeshLineMaterial({
+        color: "white",
+        resolution: new THREE.Vector2(width, height),
+        lineWidth: 1,
+      })
+  );
+
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j3, j4, [[0, 0, 0], [0, 0, 0], 1]);
+
+  useFrame(() => {
+    if (
+      j4.current &&
+      j3.current &&
+      j2.current &&
+      j1.current &&
+      fixed.current &&
+      band.current
+    ) {
+      curve.points[0].copy(j4.current.translation());
+      curve.points[1].copy(j3.current.translation());
+      curve.points[2].copy(j2.current.translation());
+      curve.points[3].copy(j1.current.translation());
+      curve.points[4].copy(fixed.current.translation());
+
+      // Update the geometry with new points
+      (band.current.geometry as MeshLineGeometry).setPoints(
+        curve.getPoints(34)
+      );
+    }
+  });
+
+  return (
+    <>
+      <RigidBody ref={fixed} type="fixed" position={[0, 3, 0]} />
+      <RigidBody position={[0.5, 2.5, 0]} ref={j1}>
+        <BallCollider args={[0.1]} />
+      </RigidBody>
+      <RigidBody position={[1, 2, 0]} ref={j2}>
+        <BallCollider args={[0.1]} />
+      </RigidBody>
+      <RigidBody position={[1.5, 1.5, 0]} ref={j3}>
+        <BallCollider args={[0.1]} />
+      </RigidBody>
+      <RigidBody position={[2, 1, 0]} ref={j4}>
+        <BallCollider args={[0.1]} />
+      </RigidBody>
+      <mesh ref={band}>
+        <meshLineGeometry />
+        <primitive object={material} />
+      </mesh>
+    </>
+  );
+}
+
 function ClientExperience({ events, skills }: ClientExperienceProps) {
   return (
     <div className="relative overflow-y-auto scrollbar-hide border-2 w-screen h-[100vh]">
-      {/* <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
-        <Physics debug interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-          <Band />
-        </Physics>
-      </Canvas> */}
       <div className="flex flex-col p-10 pb-[45vh] max-w-[1200px] mx-auto">
+        {/* Band */}
+        <div className="border border-red-800 w-52 absolute right-64 top-0 h-60">
+          <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
+            <Physics debug interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+              <Band />
+            </Physics>
+          </Canvas>
+        </div>
+
         {/* Back Button */}
         <Link href="/">
           <div className="items-center gap-2 mb-6 fixed z-0 top-10">
