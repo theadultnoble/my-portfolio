@@ -11,12 +11,12 @@ import { useRef, useState } from "react";
 import { Canvas, useThree, extend, useFrame } from "@react-three/fiber";
 import {
   BallCollider,
-  // CuboidCollider,
+  CuboidCollider,
   Physics,
   RigidBody,
   RapierRigidBody,
   useRopeJoint,
-  // useSphericalJoint
+  useSphericalJoint,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 
@@ -85,6 +85,20 @@ function Band(): JSX.Element {
       ])
   );
 
+  const card = useRef<RapierRigidBody | null>(null);
+  const vec = new THREE.Vector3();
+  const ang = new THREE.Vector3();
+  const rot = new THREE.Vector3();
+  const dir = new THREE.Vector3();
+  const [dragged, drag] = useState<{ x: number; y: number; z: number } | null>(
+    null
+  );
+
+  useSphericalJoint(j3, card, [
+    [0, 0, 0],
+    [0, 1.45, 0],
+  ]);
+
   // Create material instance
   const [material] = useState(
     () =>
@@ -95,12 +109,23 @@ function Band(): JSX.Element {
       })
   );
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j3, j4, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 0.7]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 0.7]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.7]);
+  useRopeJoint(j3, j4, [[0, 0, 0], [0, 0, 0], 0.7]);
 
-  useFrame(() => {
+  useFrame((state) => {
+    if (dragged && card.current) {
+      vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
+      dir.copy(vec).sub(state.camera.position).normalize();
+      vec.add(dir.multiplyScalar(state.camera.position.length()));
+      card.current.setNextKinematicTranslation({
+        x: vec.x - dragged.x,
+        y: vec.y - dragged.y,
+        z: vec.z - dragged.z,
+      });
+    }
+
     if (
       j4.current &&
       j3.current &&
@@ -117,14 +142,23 @@ function Band(): JSX.Element {
 
       // Update the geometry with new points
       (band.current.geometry as MeshLineGeometry).setPoints(
-        curve.getPoints(34)
+        curve.getPoints(32)
       );
+      // Tilt the card back towards the screen
+      ang.copy(card.current?.angvel() || new THREE.Vector3());
+      rot.copy(card.current?.rotation() || new THREE.Vector3());
+      if (card.current) {
+        card.current.setAngvel(
+          { x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z },
+          true
+        );
+      }
     }
   });
 
   return (
     <>
-      <RigidBody ref={fixed} type="fixed" position={[0, 3, 0]} />
+      <RigidBody ref={fixed} type="fixed" position={[4, 4.5, 0]} />
       <RigidBody position={[0.5, 2.5, 0]} ref={j1}>
         <BallCollider args={[0.1]} />
       </RigidBody>
@@ -141,26 +175,48 @@ function Band(): JSX.Element {
         <meshLineGeometry />
         <primitive object={material} />
       </mesh>
+      <RigidBody ref={card} type={dragged ? "kinematicPosition" : "dynamic"}>
+        <CuboidCollider args={[0.8, 1.125, 0.01]} />
+        <mesh
+          onPointerUp={() => drag(null)}
+          onPointerDown={(e) => {
+            if (card.current) {
+              const offset = new THREE.Vector3()
+                .copy(e.point)
+                .sub(vec.copy(card.current.translation()));
+              drag({ x: offset.x, y: offset.y, z: offset.z });
+            }
+          }}
+        >
+          <planeGeometry args={[0.8 * 2, 1.125 * 2]} />
+          <meshBasicMaterial color="white" side={THREE.DoubleSide} />
+        </mesh>
+      </RigidBody>
     </>
   );
 }
 
 function ClientExperience({ events, skills }: ClientExperienceProps) {
   return (
-    <div className="relative overflow-y-auto scrollbar-hide border-2 w-screen h-[100vh]">
-      <div className="flex flex-col p-10 pb-[45vh] max-w-[1200px] mx-auto">
-        {/* Band */}
-        <div className="border border-red-800 w-52 absolute right-64 top-0 h-60">
-          <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
-            <Physics debug interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-              <Band />
-            </Physics>
-          </Canvas>
-        </div>
-
+    <div className="relative overflow-y-auto scrollbar-hide w-screen h-[100vh]">
+      {/* Band */}
+      <Canvas
+        className="absolute inset-0 w-screen h-screen pointer-events-auto"
+        style={{ zIndex: 20 }}
+        camera={{ position: [0, 0, 13], fov: 35 }}
+      >
+        <Physics debug interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+          <Band />
+        </Physics>
+      </Canvas>
+      {/* Content */}
+      TODO: Seperate `Content`` into distinct components of Work Experience and
+      Header elements.
+      <div className="absolute z-30 border border-red-700 inset-0 flex flex-col p-10 pb-[45vh] max-w-[1200px] mx-auto">
         {/* Back Button */}
+        FIXME: zIndex
         <Link href="/">
-          <div className="items-center gap-2 mb-6 fixed z-0 top-10">
+          <div className=" items-center gap-2 mb-6 fixed top-10">
             <button className="flex items-center gap-1 px-4 py-2 bg-[#E9E8E6] rounded-full border border-[#DBDAD6] text-sm text-[#464644]">
               <Icon
                 icon="material-symbols-light:arrow-back-rounded"
@@ -179,7 +235,7 @@ function ClientExperience({ events, skills }: ClientExperienceProps) {
           </p>
         </div>
         {/* Work Experience Section - Modified positioning */}
-        <div className="flex p-1 flex-col gap-5 w-[65vh] ml-14 mt-20">
+        <div className="flex p-1 max-h-96 overflow-y: auto flex-col gap-5 w-[65vh] ml-14 mt-20">
           <div className="text-lg font-medium">Work Experience</div>
           <div className="flex flex-col gap-2">
             {events.map((event) => {
@@ -221,9 +277,11 @@ function ClientExperience({ events, skills }: ClientExperienceProps) {
           </div>
         </div>
       </div>
-
       {/* Fixed Skills Panel */}
-      <div className="flex flex-col border border-[#DBDAD6] bg-[#f7f6f4] rounded-t-lg gap-5 w-[65vh] fixed bottom-0 right-14 p-6">
+      <div
+        style={{ zIndex: 1 }}
+        className="flex flex-col border border-[#DBDAD6] bg-[#f7f6f4] rounded-t-lg gap-5 w-[65vh] fixed bottom-0 right-14 p-6"
+      >
         <h2 className="text-base font-medium text-[#464644]">Core Skills</h2>
         <div className="flex flex-wrap gap-2 ml-2">
           {skills?.map((skill: Skill) => (
