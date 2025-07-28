@@ -19,6 +19,7 @@ import {
   useSphericalJoint,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
+// import { PerspectiveCamera } from "@react-three/drei";
 
 // Define proper types for Sanity image
 interface SanityImageAsset {
@@ -71,6 +72,10 @@ function Band(): JSX.Element {
   const j2 = useRef<RapierRigidBody>(null);
   const j3 = useRef<RapierRigidBody>(null);
   const j4 = useRef<RapierRigidBody>(null);
+  // const planeWidth = 1;
+  // const textureAspect = 0.5;
+  // const texture = undefined; // Replace with your actual texture
+
   // Canvas size
   const { width, height } = useThree((state) => state.size);
   // A Catmull-Rom curve
@@ -159,23 +164,48 @@ function Band(): JSX.Element {
   return (
     <>
       <RigidBody ref={fixed} type="fixed" position={[4, 4.5, 0]} />
-      <RigidBody position={[0.5, 2.5, 0]} ref={j1}>
+      <RigidBody
+        position={[0.5, 2.5, 0]}
+        ref={j1}
+        linearDamping={0.3}
+        angularDamping={0.3}
+      >
         <BallCollider args={[0.1]} />
       </RigidBody>
-      <RigidBody position={[1, 2, 0]} ref={j2}>
+      <RigidBody
+        position={[1, 2, 0]}
+        ref={j2}
+        linearDamping={0.3}
+        angularDamping={0.3}
+      >
         <BallCollider args={[0.1]} />
       </RigidBody>
-      <RigidBody position={[1.5, 1.5, 0]} ref={j3}>
+      <RigidBody
+        position={[1.5, 1.5, 0]}
+        ref={j3}
+        linearDamping={0.3}
+        angularDamping={0.3}
+      >
         <BallCollider args={[0.1]} />
       </RigidBody>
-      <RigidBody position={[2, 1, 0]} ref={j4}>
+      <RigidBody
+        position={[2, 1, 0]}
+        ref={j4}
+        linearDamping={0.3}
+        angularDamping={0.3}
+      >
         <BallCollider args={[0.1]} />
       </RigidBody>
       <mesh ref={band}>
         <meshLineGeometry />
         <primitive object={material} />
       </mesh>
-      <RigidBody ref={card} type={dragged ? "kinematicPosition" : "dynamic"}>
+      <RigidBody
+        ref={card}
+        type={dragged ? "kinematicPosition" : "dynamic"}
+        linearDamping={0.4}
+        angularDamping={0.4}
+      >
         <CuboidCollider args={[0.8, 1.125, 0.01]} />
         <mesh
           onPointerUp={() => drag(null)}
@@ -191,6 +221,20 @@ function Band(): JSX.Element {
           <planeGeometry args={[0.8 * 2, 1.125 * 2]} />
           <meshBasicMaterial color="white" side={THREE.DoubleSide} />
         </mesh>
+        {/* <PerspectiveCamera
+          makeDefault
+          manual
+          aspect={1.05}
+          position={[0.49, 0.22, 2]}
+        />
+        <mesh>
+          <planeGeometry args={[planeWidth, -planeWidth / textureAspect]} />
+          <meshBasicMaterial
+            transparent
+            alphaMap={texture}
+            side={THREE.BackSide}
+          />
+        </mesh> */}
       </RigidBody>
     </>
   );
@@ -201,8 +245,7 @@ function ClientExperience({ events, skills }: ClientExperienceProps) {
     <div className="relative overflow-y-auto scrollbar-hide w-screen h-[100vh]">
       {/* Band */}
       <Canvas
-        className="absolute inset-0 w-screen h-screen pointer-events-auto"
-        style={{ zIndex: 20 }}
+        className="absolute inset-0 w-screen z-10 h-screen pointer-events-auto"
         camera={{ position: [0, 0, 13], fov: 35 }}
       >
         <Physics debug interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
@@ -210,13 +253,10 @@ function ClientExperience({ events, skills }: ClientExperienceProps) {
         </Physics>
       </Canvas>
       {/* Content */}
-      TODO: Seperate `Content`` into distinct components of Work Experience and
-      Header elements.
-      <div className="absolute z-30 border border-red-700 inset-0 flex flex-col p-10 pb-[45vh] max-w-[1200px] mx-auto">
+      <div className="absolute  border border-red-700 inset-0 flex flex-col p-10 w-screen h-screen mx-auto">
         {/* Back Button */}
-        FIXME: zIndex
         <Link href="/">
-          <div className=" items-center gap-2 mb-6 fixed top-10">
+          <div className=" items-center z-10 gap-2 mb-6 fixed top-10 ">
             <button className="flex items-center gap-1 px-4 py-2 bg-[#E9E8E6] rounded-full border border-[#DBDAD6] text-sm text-[#464644]">
               <Icon
                 icon="material-symbols-light:arrow-back-rounded"
@@ -227,15 +267,17 @@ function ClientExperience({ events, skills }: ClientExperienceProps) {
             </button>
           </div>
         </Link>
+
         {/* Title Section */}
-        <div className="flex flex-col text-center mt-mt-14 mb-10 w-full">
+        <div className="flex flex-col text-center p-2 z-1  mt-mt-14 mb-10 w-full ">
           <h1 className="text-3xl font-semibold text-[#464644]">Experience</h1>
           <p className="text-xs text-[#727270] mt-4">
             Use the arrow keys to navigate between projects.
           </p>
         </div>
+
         {/* Work Experience Section - Modified positioning */}
-        <div className="flex p-1 max-h-96 overflow-y: auto flex-col gap-5 w-[65vh] ml-14 mt-20">
+        <div className="flex p-1 h-screen z-5 overflow-y-visible scrollbar-thin scrollbar-thumb-[#727270] scrollbar-track-transparent scrollbar-thumb-rounded-full flex-col gap-5 z-5 w-[65vh] ml-14 mt-20 ">
           <div className="text-lg font-medium">Work Experience</div>
           <div className="flex flex-col gap-2">
             {events.map((event) => {
@@ -276,35 +318,33 @@ function ClientExperience({ events, skills }: ClientExperienceProps) {
             })}
           </div>
         </div>
-      </div>
-      {/* Fixed Skills Panel */}
-      <div
-        style={{ zIndex: 1 }}
-        className="flex flex-col border border-[#DBDAD6] bg-[#f7f6f4] rounded-t-lg gap-5 w-[65vh] fixed bottom-0 right-14 p-6"
-      >
-        <h2 className="text-base font-medium text-[#464644]">Core Skills</h2>
-        <div className="flex flex-wrap gap-2 ml-2">
-          {skills?.map((skill: Skill) => (
-            <span
-              key={skill._id}
-              className="px-3 py-1 bg-white rounded-full border border-[#DBDAD6] text-xm text-[#727270]"
-            >
-              {skill.title}
+
+        {/* Fixed Skills Panel */}
+        <div className="flex flex-col border border-[#DBDAD6] z-1 bg-[#f7f6f4] rounded-t-lg gap-5 w-[65vh] fixed bottom-0 right-14 p-6">
+          <h2 className="text-base font-medium text-[#464644]">Core Skills</h2>
+          <div className="flex flex-wrap gap-2 ml-2">
+            {skills?.map((skill: Skill) => (
+              <span
+                key={skill._id}
+                className="px-3 py-1 bg-white rounded-full border border-[#DBDAD6] text-xm text-[#727270]"
+              >
+                {skill.title}
+              </span>
+            ))}
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-base">Education</span>
+            <span className="text-xm text-[#727270]">
+              International University of Applied Sciences
             </span>
-          ))}
-        </div>
-        <div className="flex flex-col gap-1">
-          <span className="text-base">Education</span>
-          <span className="text-xm text-[#727270] ml-2">
-            International University of Applied Sciences
-          </span>
-          <span className="text-xm text-[#727270] ml-2">
-            Bachelor of Science in Software Development
-          </span>
-        </div>
-        <div className="flex flex-col">
-          <span>Languages</span>
-          <span className="text-[#727270] text-xm">English</span>
+            <span className="text-xm text-[#727270]">
+              Bachelor of Science in Software Development
+            </span>
+          </div>
+          <div className="flex flex-col">
+            <span>Languages</span>
+            <span className="text-[#727270] text-xm">English</span>
+          </div>
         </div>
       </div>
     </div>
