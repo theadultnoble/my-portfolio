@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import Link from "next/link";
 import * as THREE from "three";
 import { useRef, useState } from "react";
+import { useTexture } from "@react-three/drei";
 import { Canvas, useThree, extend, useFrame } from "@react-three/fiber";
 import {
   BallCollider,
@@ -19,7 +20,48 @@ import {
   useSphericalJoint,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
-// import { PerspectiveCamera } from "@react-three/drei";
+
+// Helper function to create rounded rectangle geometry
+function createRoundedRectGeometry(
+  width: number,
+  height: number,
+  radius: number
+) {
+  const shape = new THREE.Shape();
+  const x = -width / 2;
+  const y = -height / 2;
+
+  shape.moveTo(x + radius, y);
+  shape.lineTo(x + width - radius, y);
+  shape.quadraticCurveTo(x + width, y, x + width, y + radius);
+  shape.lineTo(x + width, y + height - radius);
+  shape.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  shape.lineTo(x + radius, y + height);
+  shape.quadraticCurveTo(x, y + height, x, y + height - radius);
+  shape.lineTo(x, y + radius);
+  shape.quadraticCurveTo(x, y, x + radius, y);
+
+  const geometry = new THREE.ShapeGeometry(shape);
+
+  // Create proper UV coordinates for the rounded rectangle
+  const positions = geometry.attributes.position.array;
+  const uvs = [];
+
+  for (let i = 0; i < positions.length; i += 3) {
+    const x = positions[i];
+    const y = positions[i + 1];
+
+    // Map UV coordinates from -width/2 to width/2 and -height/2 to height/2
+    const u = (x + width / 2) / width;
+    const v = (y + height / 2) / height;
+
+    uvs.push(u, v);
+  }
+
+  geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
+
+  return geometry;
+}
 
 // Define proper types for Sanity image
 interface SanityImageAsset {
@@ -71,10 +113,9 @@ function Band(): JSX.Element {
   const j1 = useRef<RapierRigidBody>(null);
   const j2 = useRef<RapierRigidBody>(null);
   const j3 = useRef<RapierRigidBody>(null);
-  const j4 = useRef<RapierRigidBody>(null);
-  // const planeWidth = 1;
-  // const textureAspect = 0.5;
-  // const texture = undefined; // Replace with your actual texture
+
+  // Load card texture with error handling
+  const cardTexture = useTexture("/assets/Profile.jpeg");
 
   // Canvas size
   const { width, height } = useThree((state) => state.size);
@@ -82,8 +123,7 @@ function Band(): JSX.Element {
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
-        new THREE.Vector3(), // j4
-        new THREE.Vector3(),
+        new THREE.Vector3(), // j3
         new THREE.Vector3(),
         new THREE.Vector3(),
         new THREE.Vector3(),
@@ -101,14 +141,14 @@ function Band(): JSX.Element {
 
   useSphericalJoint(j3, card, [
     [0, 0, 0],
-    [0, 1.45, 0],
+    [0, 1.35, 0],
   ]);
 
-  // Create material instance
+  // Create material instance with improved styling
   const [material] = useState(
     () =>
       new MeshLineMaterial({
-        color: "white",
+        color: "#2a2a2a",
         resolution: new THREE.Vector2(width, height),
         lineWidth: 1,
       })
@@ -117,7 +157,6 @@ function Band(): JSX.Element {
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 0.7]);
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 0.7]);
   useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.7]);
-  useRopeJoint(j3, j4, [[0, 0, 0], [0, 0, 0], 0.7]);
 
   useFrame((state) => {
     if (dragged && card.current) {
@@ -132,22 +171,20 @@ function Band(): JSX.Element {
     }
 
     if (
-      j4.current &&
       j3.current &&
       j2.current &&
       j1.current &&
       fixed.current &&
       band.current
     ) {
-      curve.points[0].copy(j4.current.translation());
-      curve.points[1].copy(j3.current.translation());
-      curve.points[2].copy(j2.current.translation());
-      curve.points[3].copy(j1.current.translation());
-      curve.points[4].copy(fixed.current.translation());
+      curve.points[0].copy(j3.current.translation());
+      curve.points[1].copy(j2.current.translation());
+      curve.points[2].copy(j1.current.translation());
+      curve.points[3].copy(fixed.current.translation());
 
-      // Update the geometry with new points
+      // Update the geometry with new points for smooth curvature
       (band.current.geometry as MeshLineGeometry).setPoints(
-        curve.getPoints(32)
+        curve.getPoints(80) // Even more points for smoother curve
       );
       // Tilt the card back towards the screen
       ang.copy(card.current?.angvel() || new THREE.Vector3());
@@ -165,46 +202,55 @@ function Band(): JSX.Element {
     <>
       <RigidBody ref={fixed} type="fixed" position={[4, 4.5, 0]} />
       <RigidBody
-        position={[0.5, 2.5, 0]}
+        position={[2, 3.5, 0]}
         ref={j1}
-        linearDamping={0.3}
-        angularDamping={0.3}
+        linearDamping={0.4}
+        angularDamping={0.4}
       >
         <BallCollider args={[0.1]} />
+        {/* Hidden visual for joints */}
+        <mesh visible={false}>
+          <sphereGeometry args={[0.1]} />
+          <meshBasicMaterial />
+        </mesh>
       </RigidBody>
       <RigidBody
-        position={[1, 2, 0]}
+        position={[1, 2.5, 0]}
         ref={j2}
-        linearDamping={0.3}
-        angularDamping={0.3}
+        linearDamping={0.4}
+        angularDamping={0.4}
       >
         <BallCollider args={[0.1]} />
+        {/* Hidden visual for joints */}
+        <mesh visible={false}>
+          <sphereGeometry args={[0.1]} />
+          <meshBasicMaterial />
+        </mesh>
       </RigidBody>
       <RigidBody
-        position={[1.5, 1.5, 0]}
+        position={[0, 1.5, 0]}
         ref={j3}
-        linearDamping={0.3}
-        angularDamping={0.3}
+        linearDamping={0.5}
+        angularDamping={0.5}
       >
         <BallCollider args={[0.1]} />
-      </RigidBody>
-      <RigidBody
-        position={[2, 1, 0]}
-        ref={j4}
-        linearDamping={0.3}
-        angularDamping={0.3}
-      >
-        <BallCollider args={[0.1]} />
+        {/* Hidden visual for joints */}
+        <mesh visible={false}>
+          <sphereGeometry args={[0.1]} />
+          <meshBasicMaterial />
+        </mesh>
       </RigidBody>
       <mesh ref={band}>
         <meshLineGeometry />
         <primitive object={material} />
       </mesh>
+
+      {/* Metallic clip connecting rope to card - positioned at the top of the card */}
       <RigidBody
         ref={card}
         type={dragged ? "kinematicPosition" : "dynamic"}
-        linearDamping={0.4}
-        angularDamping={0.4}
+        linearDamping={0.8}
+        angularDamping={0.8}
       >
         <CuboidCollider args={[0.8, 1.125, 0.01]} />
         <mesh
@@ -218,23 +264,44 @@ function Band(): JSX.Element {
             }
           }}
         >
-          <planeGeometry args={[0.8 * 2, 1.125 * 2]} />
-          <meshBasicMaterial color="white" side={THREE.DoubleSide} />
-        </mesh>
-        {/* <PerspectiveCamera
-          makeDefault
-          manual
-          aspect={1.05}
-          position={[0.49, 0.22, 2]}
-        />
-        <mesh>
-          <planeGeometry args={[planeWidth, -planeWidth / textureAspect]} />
+          {/* Main card with rounded corners */}
+          <primitive object={createRoundedRectGeometry(1.6, 2.25, 0.1)} />
           <meshBasicMaterial
-            transparent
-            alphaMap={texture}
-            side={THREE.BackSide}
+            map={cardTexture}
+            side={THREE.DoubleSide}
+            // color="#ffffff"
           />
-        </mesh> */}
+
+          {/* Metallic clip connecting rope to card - positioned at the top of the card */}
+          <mesh position={[0, 1.35, 0]}>
+            <cylinderGeometry args={[0.05, 0.05, 0.2, 8]} />
+            <meshStandardMaterial
+              color="#8a8a8a"
+              metalness={0.8}
+              roughness={0.2}
+            />
+          </mesh>
+
+          {/* Clip attachment ring */}
+          <mesh position={[0, 1.25, 0]}>
+            <torusGeometry args={[0.08, 0.02, 8, 16]} />
+            <meshStandardMaterial
+              color="#6a6a6a"
+              metalness={0.9}
+              roughness={0.1}
+            />
+          </mesh>
+        </mesh>
+        {/* Rounded border using a slightly larger rounded rectangle */}
+        <mesh position={[0, 0, -0.001]}>
+          <primitive object={createRoundedRectGeometry(1.7, 2.35, 0.12)} />
+          <meshBasicMaterial
+            color="#1a1a1a"
+            side={THREE.DoubleSide}
+            transparent={true}
+            opacity={0.9}
+          />
+        </mesh>
       </RigidBody>
     </>
   );
@@ -248,7 +315,7 @@ function ClientExperience({ events, skills }: ClientExperienceProps) {
         className="absolute inset-0 w-screen z-10 h-screen pointer-events-auto"
         camera={{ position: [0, 0, 13], fov: 35 }}
       >
-        <Physics debug interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+        <Physics timeStep={1 / 60} debug numSolverIterations={20}>
           <Band />
         </Physics>
       </Canvas>
