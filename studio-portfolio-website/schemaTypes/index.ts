@@ -4,6 +4,7 @@ import {projectType} from './projectType'
 import {blogPostType} from './blogPostType'
 import {experienceType} from './experienceType'
 import {skillType} from './skillsTypes'
+import {toolType} from './toolsTypes'
 
 export const schemaTypes = [
   learningType,
@@ -12,4 +13,5 @@ export const schemaTypes = [
   blogPostType,
   experienceType,
   skillType,
+  toolType,
 ]

@@ -32,9 +32,10 @@ export default function Home() {
               Developer.
             </p>
             <p className=" text-xs text-[#727270] ">
-              Experienced web and mobile developer passionate about creating
-              efficient solutions, documenting knowledge, and simplifying
-              complex topics through engaging technical writing.
+              DevRel engineer helping developers discover, learn, and ship
+              faster. I work at the intersection of code, content, and
+              community, to drive adoption by bridging the gap between
+              developers and products among technical and non technical users.
             </p>
           </div>
         </div>
